@@ -36,7 +36,7 @@ if (!function_exists('insertUser')) {
 
         $hash = password_hash($password, PASSWORD_DEFAULT);
 
-        $sql = 'INSERT INTO user(first_name, last_name, username, email, password) VALUES(:firstName,:lastName,:username,:email,:password)';
+        $sql = 'INSERT INTO users(first_name, last_name, username, email, password) VALUES(:firstName,:lastName,:username,:email,:password)';
 
         $statment = $pdo->prepare($sql);
 

@@ -11,7 +11,7 @@ if (isset($_POST['email'], $_POST['password'])) {
     $email = trim(filter_var($_POST['email'], FILTER_SANITIZE_EMAIL));
 
 
-    $statement = $pdo->prepare('SELECT * FROM user WHERE email=:email');
+    $statement = $pdo->prepare('SELECT * FROM users WHERE email=:email');
 
     if (!$statement) {
         die(var_dump($pdo->errorInfo()));

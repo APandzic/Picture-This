@@ -24,7 +24,7 @@ if (isset($_POST['firstName'], $_POST['lastName'], $_POST['username'], $_POST['e
     }
 
     // check if email or username exist
-    $statement = $pdo->prepare('SELECT * FROM user WHERE username=:username OR email=:email');
+    $statement = $pdo->prepare('SELECT * FROM users WHERE username=:username OR email=:email');
 
     if (!$statement) {
         die(var_dump($pdo->errorInfo()));
@@ -53,7 +53,7 @@ if (isset($_POST['firstName'], $_POST['lastName'], $_POST['username'], $_POST['e
 
     //login the new user
 
-    $statement = $pdo->prepare('SELECT * FROM user WHERE email=:email');
+    $statement = $pdo->prepare('SELECT * FROM users WHERE email=:email');
 
     if (!$statement) {
         die(var_dump($pdo->errorInfo()));
