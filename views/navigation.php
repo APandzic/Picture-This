@@ -6,9 +6,11 @@
             <a class="nav-link" href="/index.php">Home</a>
         </li>
 
-        <li>
-            <a class="nav-link" href="/login.php">login</a>
-        </li>
+        <?php if (!isset($_SESSION["user"])) : ?>
+            <li>
+                <a class="nav-link" href="/login.php">login</a>
+            </li>
+        <?php endif; ?>
 
         <li>
             <a class="nav-link" href="/editavatar.php">editavatar</a>
@@ -30,9 +32,11 @@
             <a class="nav-link" href="/newpost.php">newpost</a>
         </li>
 
-        <li>
-            <a class="nav-link" href="/reg.php">registration</a>
-        </li>
+        <?php if (!isset($_SESSION["user"])) : ?>
+            <li>
+                <a class="nav-link" href="/registration.php">registration</a>
+            </li>
+        <?php endif; ?>
 
         <?php if (isset($_SESSION["user"])) : ?>
             <li>

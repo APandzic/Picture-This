@@ -23,15 +23,21 @@ if (isset($_POST['email'], $_POST['password'])) {
 
     $user = $statement->fetch(PDO::FETCH_ASSOC);
 
-    if (!$user) {
+    // checks users email
+    if ($email !== $user['email']) {
+        $_SESSION['message'] = 'Whoops! Looks like you missed something. Please try again.';
         redirect('/login.php');
     }
 
+    // checks users password
     if (password_verify($_POST['password'], $user['password'])) {
 
         unset($user['password']);
 
         $_SESSION["user"] = $user;
+    } else {
+        $_SESSION['message'] = 'Whoops! Looks like you missed something. Please try again.';
+        redirect('/login.php');
     }
 }
 
