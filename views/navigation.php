@@ -12,9 +12,11 @@
             </li>
         <?php endif; ?>
 
-        <li>
-            <a class="nav-link" href="/editavatar.php">editavatar</a>
-        </li>
+        <?php if (isset($_SESSION["user"])) : ?>
+            <li>
+                <a class="nav-link" href="/editavatar.php">editavatar</a>
+            </li>
+        <?php endif; ?>
 
         <li>
             <a class="nav-link" href="/editlike.php">editlike</a>

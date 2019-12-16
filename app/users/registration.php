@@ -65,6 +65,7 @@ if (isset($_POST['firstName'], $_POST['lastName'], $_POST['username'], $_POST['e
 
     $user = $statement->fetch(PDO::FETCH_ASSOC);
 
+    unset($user['password']);
     $_SESSION["user"] = $user;
 }
 

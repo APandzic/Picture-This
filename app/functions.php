@@ -53,3 +53,57 @@ if (!function_exists('insertUser')) {
         ]);
     }
 }
+
+if (!function_exists('createUniqueFileName')) {
+    /**
+     * when user uploads file this function will create a unique file name.
+     *
+     * @param type $username
+     * @param type $filename
+     *
+     * @return string variable
+     *
+     */
+    function createUniqueFileName(string $username, $filename)
+    {
+        $temp = explode(".", $filename);
+        $newfilename = time() . $username . '.' . end($temp);
+
+        return $newfilename;
+    }
+}
+
+if (!function_exists('getUserPosts')) {
+    /**
+     * Undocumented function
+     *
+     * @param string $userId
+     * @param string $dbPath
+     * @return void
+     *
+     */
+    function getUserPosts(string $userId, $dbPath = "sqlite:app/database/database.db")
+    {
+        $pdo = new PDO($dbPath);
+
+        $sql = 'SELECT * FROM posts WHERE user_id=:id ORDER BY date DESC';
+
+        $statment = $pdo->prepare($sql);
+
+        if (!$statment) {
+            die(var_dump($pdo->errorInfo()));
+        }
+
+        $statment->execute([
+            ':id' => $userId,
+        ]);
+
+        $posts = $statment->fetchAll(PDO::FETCH_ASSOC);
+
+        return $posts;
+    }
+}
+
+
+function getAllPosts(string $dbPath = "sqlite:/app/database/database.db")
+{ }

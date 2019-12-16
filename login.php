@@ -2,6 +2,8 @@
 
 require __DIR__ . '/views/header.php';
 
+$message = $_SESSION['message'] ?? '';
+unset($_SESSION['message']);
 
 ?>
 <article>
