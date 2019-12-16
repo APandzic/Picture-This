@@ -104,6 +104,23 @@ if (!function_exists('getUserPosts')) {
     }
 }
 
+if (!function_exists('getAllPosts')) {
+    function getAllPosts(string $dbPath = "sqlite:app/database/database.db")
+    {
+        $pdo = new PDO($dbPath);
 
-function getAllPosts(string $dbPath = "sqlite:/app/database/database.db")
-{ }
+        $sql = 'SELECT * FROM posts ORDER BY date DESC';
+
+        $statment = $pdo->prepare($sql);
+
+        if (!$statment) {
+            die(var_dump($pdo->errorInfo()));
+        }
+
+        $statment->execute();
+
+        $posts = $statment->fetchAll(PDO::FETCH_ASSOC);
+
+        return $posts;
+    }
+}
