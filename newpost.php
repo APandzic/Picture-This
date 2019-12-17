@@ -4,7 +4,6 @@ require __DIR__ . '/views/header.php';
 $message = $_SESSION['message'] ?? '';
 unset($_SESSION['message']);
 
-print_r($_SESSION['user']);
 ?>
 <article>
     <p>This is the new post page.</p>
@@ -29,7 +28,9 @@ print_r($_SESSION['user']);
 
 <!-- to print out every post made -->
 <?php foreach (getUserPosts($_SESSION['user']['id']) as $post) : ?>
-    <img src="<?php echo '/imgPosts/' . $post['post_img']; ?>" alt="posts">
+    <a href="<?php echo "editPost.php?id=" . $post['id'] ?>">
+        <img src="<?php echo '/imgPosts/' . $post['post_img']; ?>" alt="posts">
+    </a>
     <p><?php echo $post['description']; ?></p>
 
 <?php endforeach; ?>

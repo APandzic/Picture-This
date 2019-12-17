@@ -11,7 +11,7 @@ require __DIR__ . '/../app/autoload.php';
 
     <title><?php echo $config['title']; ?></title>
 
-    <link rel="stylesheet" href="/assets/styles/main.css">
+    <link rel="stylesheet" href="/assets/style/main.css">
 </head>
 
 <body>

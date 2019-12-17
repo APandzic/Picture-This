@@ -75,11 +75,12 @@ if (!function_exists('createUniqueFileName')) {
 
 if (!function_exists('getUserPosts')) {
     /**
-     * Undocumented function
+     * Get all user posts.
      *
      * @param string $userId
      * @param string $dbPath
-     * @return void
+     *
+     * @return array
      *
      */
     function getUserPosts(string $userId, $dbPath = "sqlite:app/database/database.db")
@@ -104,7 +105,46 @@ if (!function_exists('getUserPosts')) {
     }
 }
 
+if (!function_exists('getUserPostById')) {
+    /**
+     * Get one user post
+     *
+     * @param string $userId
+     * @param string $dbPath
+     *
+     * @return array
+     *
+     */
+    function getUserPostbyid(string $postId, $dbPath = "sqlite:app/database/database.db")
+    {
+        $pdo = new PDO($dbPath);
+
+        $sql = 'SELECT * FROM posts WHERE id=:id';
+
+        $statment = $pdo->prepare($sql);
+
+        if (!$statment) {
+            die(var_dump($pdo->errorInfo()));
+        }
+
+        $statment->execute([
+            ':id' => $postId,
+        ]);
+
+        $post = $statment->fetch(PDO::FETCH_ASSOC);
+
+        return $post;
+    }
+}
+
 if (!function_exists('getAllPosts')) {
+    /**
+     *
+     *
+     *
+     * @param string $dbPath
+     * @return void
+     */
     function getAllPosts(string $dbPath = "sqlite:app/database/database.db")
     {
         $pdo = new PDO($dbPath);
