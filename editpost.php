@@ -14,16 +14,18 @@ $post = getUserPostbyid($_GET['id']);
 <?php endif; ?>
 
 <img src="<?php echo '/imgPosts/' . $post['post_img']; ?>" alt="posts">
-<button class="editPostimg">Change picture</button>
-<form class="editPost" action="app/posts/editPost.php" method="post" enctype="multipart/form-data">
 
+<form action="<?php echo "/app/posts/editPost.php?id=" . $post['id'] ?>" method="post" enctype="multipart/form-data">
 
+    <div>
+        <label for="post">Choose a image to upload</label>
+        <input type="file" name="post" accept=".png, .jpg, .jpeg">
+    </div>
     <div>
         <label for="description">Description</label>
         <textarea type="text" name="description" cols="30" rows="10"><?php echo $post['description']; ?></textarea>
         <small>Please provide a descrition for the post.</small>
     </div>
-
     <button type="submit">Upload</button>
 </form>
 <?php require __DIR__ . '/views/footer.php'; ?>
