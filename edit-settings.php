@@ -8,40 +8,65 @@ unset($_SESSION['message']);
     <p>This is the edit settings page.</p>
 </article>
 
-<form action="<?php echo "/app/posts/edit-settings.php?id=" . $post['id'] ?>" method="post" enctype="multipart/form-data">
+<form action="app/users/edit-settings.php" method="post" enctype="multipart/form-data">
 
     <div>
         <label for="username">Username</label>
         <input type="username" name="username" placeholder="puffy" required>
         <small>Please provide your new username.</small>
     </div>
+
+    <button type="submit">Change username</button>
+</form>
+
+<form action="app/users/edit-settings.php" method="post" enctype="multipart/form-data">
+
     <div>
         <label for="password">Password</label>
         <input type="password" name="password" required>
         <small>Please provide your old password (passphrase).</small>
     </div>
     <div>
-        <label for="newPassword">Password</label>
-        <input type="password" name="password" required>
+        <label for="newPassword">New Password</label>
+        <input type="password" name="newPassword" required>
         <small>Please provide your new password (passphrase).</small>
     </div>
     <div>
-        <label for="confirmNewPassword">Confirm Password</label>
-        <input type="Password" name="confirmPassword" required>
+        <label for="confirmNewPassword">Confirm New Password</label>
+        <input type="Password" name="confirmNewPassword" required>
         <small>Please confirm your password (passphrase).</small>
     </div>
+
+    <button type="submit">Change Password</button>
+</form>
+
+<form action="app/users/edit-settings.php" method="post" enctype="multipart/form-data">
+
     <div>
         <label for="email">Email</label>
         <input type="email" name="email" placeholder="andreas@gmail.com" required>
         <small>Please provide your new email address.</small>
     </div>
 
-    <?php if ($message !== '') : ?>
-        <p><?php echo $message; ?></p>
-    <?php endif; ?>
-
-    <button type="submit">Upload</button>
+    <button type="submit">change email</button>
 </form>
+
+<form action="app/users/edit-settings.php" method="post" enctype="multipart/form-data">
+
+    <div>
+        <label for="biography">biography</label>
+        <textarea type="text" name="biography" cols="30" rows="10"></textarea>
+        <small>Please provide a descrition of the account in biography</small>
+    </div>
+    <button type="submit">Edit biography</button>
+</form>
+
+
+
+
+<?php if ($message !== '') : ?>
+    <p><?php echo $message; ?></p>
+<?php endif; ?>
 
 
 <?php require __DIR__ . '/views/footer.php'; ?>
