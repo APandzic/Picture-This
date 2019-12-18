@@ -78,14 +78,13 @@ if (!function_exists('getUserPosts')) {
      * Get all user posts.
      *
      * @param string $userId
-     * @param string $dbPath
+     * @param PDO $pdo
      *
      * @return array
      *
      */
-    function getUserPosts(string $userId, $dbPath = "sqlite:app/database/database.db")
+    function getUserPosts(string $userId, PDO $pdo): array
     {
-        $pdo = new PDO($dbPath);
 
         $sql = 'SELECT * FROM posts WHERE user_id=:id ORDER BY date DESC';
 
@@ -110,14 +109,13 @@ if (!function_exists('getUserPostById')) {
      * Get one user post
      *
      * @param string $userId
-     * @param string $dbPath
+     * @param PDO $pdo
      *
      * @return array
      *
      */
-    function getUserPostbyid(string $postId, $dbPath = "sqlite:app/database/database.db")
+    function getUserPostbyid(string $postId, PDO $pdo): array
     {
-        $pdo = new PDO($dbPath);
 
         $sql = 'SELECT * FROM posts WHERE id=:id';
 
@@ -141,13 +139,12 @@ if (!function_exists('getAllPosts')) {
     /**
      *
      *
+     * @param PDO $pdo
      *
-     * @param string $dbPath
-     * @return void
+     * @return array
      */
-    function getAllPosts(string $dbPath = "sqlite:app/database/database.db")
+    function getAllPosts(PDO $pdo): array
     {
-        $pdo = new PDO($dbPath);
 
         $sql = 'SELECT * FROM posts ORDER BY date DESC';
 

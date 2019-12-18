@@ -27,7 +27,7 @@ if (isset($_FILES['avatar'])) {
     }
 
     if ($avatar['type'] === 'image/jpeg' || $avatar['type'] === 'image/jpg' || $avatar['type'] === 'image/png') {
-        $destination = __DIR__ . '/../../IMGAVATAR/' . createUniqueFileName($_SESSION['user']['username'], $avatar["name"]);
+        $destination = __DIR__ . '/../../IMG-AVATAR/' . createUniqueFileName($_SESSION['user']['username'], $avatar["name"]);
         move_uploaded_file($avatar['tmp_name'], $destination);
     } else {
         $_SESSION['message'] = 'The ' . $avatar['name'] . ' image file type is not allowed.';
@@ -52,9 +52,9 @@ if (isset($_FILES['avatar'])) {
 
     // delets old avatar file.
     if ($oldFilename !== NULL) {
-        unlink(__DIR__ . '/../../imgAvatar/' . $oldFilename);
+        unlink(__DIR__ . '/../../img-avatar/' . $oldFilename);
     }
 
     $_SESSION['user']['profile_avatar'] = $avtarStringName;
 }
-redirect('/editavatar');
+redirect('/edit-avatar');

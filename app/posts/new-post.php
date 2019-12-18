@@ -24,7 +24,7 @@ if (isset($_FILES['post'], $_POST['description'])) {
     }
 
     if ($post['type'] === 'image/jpeg' || $post['type'] === 'image/jpg' || $post['type'] === 'image/png') {
-        $destination = __DIR__ . '/../../imgPosts/' . createUniqueFileName($_SESSION['user']['username'], $post["name"]);
+        $destination = __DIR__ . '/../../img-posts/' . createUniqueFileName($_SESSION['user']['username'], $post["name"]);
         move_uploaded_file($post['tmp_name'], $destination);
     } else {
         $_SESSION['message'] = 'The ' . $post['name'] . ' image file type is not allowed.';

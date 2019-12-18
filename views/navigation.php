@@ -14,24 +14,24 @@
 
         <?php if (isset($_SESSION["user"])) : ?>
             <li>
-                <a class="nav-link" href="/editavatar.php">editavatar</a>
+                <a class="nav-link" href="/edit-avatar.php">editavatar</a>
             </li>
         <?php endif; ?>
 
         <li>
-            <a class="nav-link" href="/editlike.php">editlike</a>
+            <a class="nav-link" href="/edit-like.php">editlike</a>
         </li>
 
         <li>
-            <a class="nav-link" href="/editpost.php">editpost</a>
+            <a class="nav-link" href="/edit-post.php">editpost</a>
         </li>
 
         <li>
-            <a class="nav-link" href="/editsettings.php">editsettings</a>
+            <a class="nav-link" href="/edit-settings.php">editsettings</a>
         </li>
 
         <li>
-            <a class="nav-link" href="/newpost.php">newpost</a>
+            <a class="nav-link" href="/new-post.php">newpost</a>
         </li>
 
         <?php if (!isset($_SESSION["user"])) : ?>

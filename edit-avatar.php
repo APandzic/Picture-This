@@ -13,7 +13,7 @@ unset($_SESSION['message']);
     <p><?php echo $message; ?></p>
 <?php endif; ?>
 
-<form action="app/users/editAvatar.php" method="post" enctype="multipart/form-data">
+<form action="app/users/edit-avatar.php" method="post" enctype="multipart/form-data">
     <div>
         <label for="avatar">Choose a image to upload</label>
         <input type="file" name="avatar" id="avatar" accept=".png, .jpg, .jpeg" required>
@@ -22,6 +22,6 @@ unset($_SESSION['message']);
     <button type="submit">Upload</button>
 </form>
 
-<img src="<?php echo '/imgAvatar/' . $_SESSION['user']['profile_avatar']; ?>" alt="profile picture">
+<img src="<?php echo '/img-avatar/' . $_SESSION['user']['profile_avatar']; ?>" alt="profile picture">
 
 <?php require __DIR__ . '/views/footer.php'; ?>

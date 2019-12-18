@@ -10,7 +10,7 @@ require __DIR__ . '/../autoload.php';
 
 if (isset($_FILES['post'], $_POST['description'], $_GET['id'])) {
 
-    $id = trim(filter_var($_GET['id'], FILTER_SANITIZE_STRING));
+    $id = trim(filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT));
     $description = trim(filter_var($_POST['description'], FILTER_SANITIZE_STRING));
     $post = $_FILES['post'];
 
@@ -41,7 +41,7 @@ if (isset($_FILES['post'], $_POST['description'], $_GET['id'])) {
         }
 
         if ($post['type'] === 'image/jpeg' || $post['type'] === 'image/jpg' || $post['type'] === 'image/png') {
-            $destination = __DIR__ . '/../../imgPosts/' . createUniqueFileName($_SESSION['user']['username'], $post["name"]);
+            $destination = __DIR__ . '/../../img-posts/' . createUniqueFileName($_SESSION['user']['username'], $post["name"]);
             move_uploaded_file($post['tmp_name'], $destination);
         } else {
             $_SESSION['message'] = 'The ' . $post['name'] . ' image file type is not allowed.';
@@ -82,7 +82,7 @@ if (isset($_FILES['post'], $_POST['description'], $_GET['id'])) {
 
         // delets old avatar file.
         if ($oldFilename !== NULL) {
-            unlink(__DIR__ . '/../../imgPosts/' . $oldFilename);
+            unlink(__DIR__ . '/../../img-posts/' . $oldFilename);
         }
     }
 }
