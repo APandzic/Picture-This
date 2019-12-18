@@ -127,5 +127,54 @@ if (isset($_POST['email'])) {
     $_SESSION['user']['email'] = $email;
 }
 
+if (isset($_POST['biography'])) {
+    $biography = trim(filter_var($_POST['biography'], FILTER_SANITIZE_STRING));
+
+
+    // retrieves biography from db
+    $statement = $pdo->prepare('SELECT * FROM biographys WHERE user_id=:user_id');
+
+    if (!$statement) {
+        die(var_dump($pdo->errorInfo()));
+    }
+
+    $statement->execute([
+        ':user_id' => $_SESSION['user']['id'],
+    ]);
+
+    $user = $statement->fetch(PDO::FETCH_ASSOC);
+
+    //checks for user in table "biographys"
+    if (!$user) {
+        //inserts user to table biographys first time
+        $sql = 'INSERT INTO biographys(user_id, biography) VALUES(:id,:biography)';
+
+        $statment = $pdo->prepare($sql);
+
+        if (!$statment) {
+            die(var_dump($pdo->errorInfo()));
+        }
+
+        $statment->execute([
+            ':id' => $_SESSION['user']['id'],
+            ':biography' => $biography,
+        ]);
+    } else {
+        //updates user in table biographys
+        $sql = 'UPDATE biographys SET biography=:biography WHERE user_id=:id';
+
+        $statment = $pdo->prepare($sql);
+
+        if (!$statment) {
+            die(var_dump($pdo->errorInfo()));
+        }
+
+        $statment->execute([
+            ':id' => $_SESSION['user']['id'],
+            ':biography' => $biography,
+        ]);
+    }
+}
+
 
 redirect('/');
