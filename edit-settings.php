@@ -3,6 +3,8 @@ require __DIR__ . '/views/header.php';
 
 $message = $_SESSION['message'] ?? '';
 unset($_SESSION['message']);
+$biography = getUserBiography($_SESSION['user']['id'], $pdo)
+
 ?>
 <article>
     <p>This is the edit settings page.</p>
@@ -55,7 +57,7 @@ unset($_SESSION['message']);
 
     <div>
         <label for="biography">biography</label>
-        <textarea type="text" name="biography" cols="30" rows="10"></textarea>
+        <textarea type="text" name="biography" cols="30" rows="10"><?php echo $biography['biography']; ?></textarea>
         <small>Please provide a descrition of the account in biography</small>
     </div>
     <button type="submit">Edit biography</button>

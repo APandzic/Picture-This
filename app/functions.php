@@ -161,3 +161,34 @@ if (!function_exists('getAllPosts')) {
         return $posts;
     }
 }
+
+if (!function_exists('getUserBiography')) {
+    /**
+     * Get users Biography
+     *
+     * @param string $userId
+     * @param PDO $pdo
+     *
+     * @return array
+     *
+     */
+    function getUserBiography(string $userId, PDO $pdo): array
+    {
+
+        $sql = 'SELECT * FROM biographys WHERE user_id=:id';
+
+        $statment = $pdo->prepare($sql);
+
+        if (!$statment) {
+            die(var_dump($pdo->errorInfo()));
+        }
+
+        $statment->execute([
+            ':id' => $userId,
+        ]);
+
+        $biography = $statment->fetch(PDO::FETCH_ASSOC);
+
+        return $biography;
+    }
+}
