@@ -1,50 +1,31 @@
-<nav>
-    <a href="#"><?php echo $config['title']; ?></a>
+<nav class="navbar">
+    <a class="nav-link" href="/index.php">Home</a>
 
-    <ul>
-        <li>
-            <a class="nav-link" href="/index.php">Home</a>
-        </li>
+    <?php if (!isset($_SESSION["user"])) : ?>
 
-        <?php if (!isset($_SESSION["user"])) : ?>
-            <li>
-                <a class="nav-link" href="/login.php">login</a>
-            </li>
-        <?php endif; ?>
+        <a class="nav-link" href="/login.php">login</a>
 
-        <?php if (isset($_SESSION["user"])) : ?>
-            <li>
-                <a class="nav-link" href="/edit-avatar.php">editavatar</a>
-            </li>
-        <?php endif; ?>
+    <?php endif; ?>
 
-        <li>
-            <a class="nav-link" href="/edit-like.php">editlike</a>
-        </li>
+    <?php if (isset($_SESSION["user"])) : ?>
 
-        <li>
-            <a class="nav-link" href="/edit-post.php">editpost</a>
-        </li>
+        <a class="nav-link" href="/edit-avatar.php">editavatar</a>
 
-        <li>
-            <a class="nav-link" href="/edit-settings.php">editsettings</a>
-        </li>
+    <?php endif; ?>
 
-        <li>
-            <a class="nav-link" href="/new-post.php">newpost</a>
-        </li>
+    <a class="nav-link" href="/edit-settings.php">editsettings</a>
 
-        <?php if (!isset($_SESSION["user"])) : ?>
-            <li>
-                <a class="nav-link" href="/registration.php">registration</a>
-            </li>
-        <?php endif; ?>
+    <a class="nav-link" href="/new-post.php">newpost</a>
 
-        <?php if (isset($_SESSION["user"])) : ?>
-            <li>
-                <a href="/app/users/logout.php">logout</a>
-            </li>
-        <?php endif; ?>
+    <?php if (!isset($_SESSION["user"])) : ?>
 
-    </ul>
+        <a class="nav-link" href="/registration.php">registration</a>
+
+    <?php endif; ?>
+
+    <?php if (isset($_SESSION["user"])) : ?>
+
+        <a href="/app/users/logout.php">logout</a>
+
+    <?php endif; ?>
 </nav>

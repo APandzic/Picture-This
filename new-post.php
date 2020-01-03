@@ -26,15 +26,4 @@ unset($_SESSION['message']);
     <button type="submit">Upload</button>
 </form>
 
-<!-- to print out every post made -->
-<?php foreach (getUserPosts($_SESSION['user']['id'], $pdo) as $post) : ?>
-    <a href="<?php echo "edit-post.php?id=" . $post['id'] ?>">
-        <img src="<?php echo '/img-posts/' . $post['post_img']; ?>" alt="posts">
-    </a>
-    <p><?php echo $post['description']; ?></p>
-
-<?php endforeach; ?>
-
-
-
 <?php require __DIR__ . '/views/footer.php'; ?>

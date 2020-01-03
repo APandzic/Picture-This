@@ -192,3 +192,85 @@ if (!function_exists('getUserBiography')) {
         return $biography;
     }
 }
+
+if (!function_exists('json_response')) {
+    /**
+     * Create and return a JSON response.
+     *
+     * @param array $data
+     * @param int $code
+     *
+     * @return string
+     */
+    function json_response(array $data = [], int $code = 200): string
+    {
+        // First we set the HTTP status code which will default to 200. If you want
+        // to read more about status codes, please visit: https://httpstatuses.com/
+        http_response_code($code);
+        // We should always specify what kind of data is returned, in this case we
+        // need to set the content type to JSON.
+        header('Content-Type: application/json');
+        // Conver the JSON data into a string.
+        return json_encode($data);
+    }
+}
+
+if (!function_exists('getLikes')) {
+    /**
+     * get all likes
+     *
+     * @param string $id
+     * @param PDO $pde
+     *
+     * @return string
+     */
+    function getLikes(String $id, $pdo): array
+    {
+        $sql = 'SELECT * FROM likes WHERE posts_id=:id';
+
+        $statment = $pdo->prepare($sql);
+
+        if (!$statment) {
+            die(var_dump($pdo->errorInfo()));
+        }
+
+        $statment->execute([
+            ':id' => $id,
+        ]);
+
+        $likes = $statment->fetchAll(PDO::FETCH_ASSOC);
+
+        return $likes;
+    }
+}
+
+if (!function_exists('getLikesCounter')) {
+    /**
+     * get like count
+     *
+     * @param string $posts_id
+     * @param PDO $pdo
+     *
+     * @return string
+     */
+    function getLikeCount(String $id, $pdo): string
+    {
+        $sql = 'SELECT * FROM likes WHERE posts_id=:id';
+
+        $statment = $pdo->prepare($sql);
+
+        if (!$statment) {
+            die(var_dump($pdo->errorInfo()));
+        }
+
+        $statment->execute([
+            ':id' => $id,
+        ]);
+
+        $likes = $statment->fetchAll(PDO::FETCH_ASSOC);
+
+        $lenght = strval(count($likes));
+
+        return $lenght;
+    }
+}

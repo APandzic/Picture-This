@@ -1,14 +1,28 @@
 "use strict";
 
-const buttonEditPost = document.querySelector(".editPostimg");
-const div = document.createElement("div");
+const forms = document.querySelectorAll(".form");
 
-buttonEditPost.addEventListener("click", () => {
-  const template = `
-  <label for="post">Choose a image to upload</label>
-  <input type="file" name="post" accept=".png, .jpg, .jpeg" required>
-  `;
+forms.forEach(form => {
+  form.addEventListener("submit", event => {
+    event.preventDefault();
+    let button = event.currentTarget.querySelector(".likeButton");
+    let likeCounter = event.currentTarget.querySelector(".likeCounter");
 
-  div.innerHTML = template;
-  document.querySelector(".editPost").prepend(div);
+    const formData = new FormData(form);
+
+    fetch("/app/posts/like-posts.php", {
+      method: "POST",
+      body: formData
+    })
+      .then(response => response.json())
+      .then(json => {
+        likeCounter.innerHTML = json.counts;
+        if (button.innerHTML === "like") {
+          button.innerHTML = "unlike";
+        } else {
+          button.innerHTML = "like";
+        }
+      })
+      .catch(console.error);
+  });
 });
