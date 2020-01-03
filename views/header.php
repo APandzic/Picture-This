@@ -12,9 +12,10 @@ require __DIR__ . '/../app/autoload.php';
     <title><?php echo $config['title']; ?></title>
 
     <link href="https://unpkg.com/sanitize.css" rel="stylesheet" />
-    <link rel="stylesheet" href="/assets/style/navigation.css">
     <link rel="stylesheet" href="/assets/style/main.css">
+    <link rel="stylesheet" href="/assets/style/navigation.css">
     <link rel="stylesheet" href="/assets/style/index.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 </head>
 
 <body>

@@ -274,3 +274,38 @@ if (!function_exists('getLikesCounter')) {
         return $lenght;
     }
 }
+
+if (!function_exists('checkIfPostIsLiked')) {
+    /**
+     * Check if user has liked post.
+     *
+     * @param string $posts_id
+     * @param string $user_id
+     * @param PDO $pdo
+     *
+     * @return string
+     */
+    function checkIfPostIsLiked(String $posts_id, string $user_id, $pdo): string
+    {
+        $sql = 'SELECT * FROM likes WHERE posts_id=:postId AND users_id=:userId';
+
+        $statement = $pdo->prepare($sql);
+
+        if (!$statement) {
+            die(var_dump($pdo->errorInfo()));
+        }
+
+        $statement->execute([
+            ':postId' => $posts_id,
+            ':userId' => $user_id,
+        ]);
+
+        if ($statement->fetch()) {
+            $string = "unlike";
+            return $string;
+        } else {
+            $string = "like";
+            return $string;
+        }
+    }
+}

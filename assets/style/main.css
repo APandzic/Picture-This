@@ -1,1 +1,25 @@
 /* In this file you can add your custom styles. */
+
+* {
+  font-style: normal;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  width: 500px;
+  padding-bottom: 50px;
+}
+
+button {
+  margin-bottom: 10px;
+  border-style: ridge;
+  background-color: #ffffff;
+  padding: 5px 9px;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+input {
+  border: 2px solid #000000;
+  border-radius: 4px;
+}

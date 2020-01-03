@@ -9,11 +9,11 @@
 
     <?php if (isset($_SESSION["user"])) : ?>
 
-        <a class="nav-link" href="/edit-avatar.php">editavatar</a>
+        <!-- <a class="nav-link" href="/edit-avatar.php">editavatar</a> -->
 
     <?php endif; ?>
 
-    <a class="nav-link" href="/edit-settings.php">editsettings</a>
+    <!-- <a class="nav-link" href="/edit-settings.php">editsettings</a> -->
 
     <a class="nav-link" href="/new-post.php">newpost</a>
 

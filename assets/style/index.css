@@ -1,9 +1,57 @@
-* {
-  font-style: normal;
-  font-family: Arial, Helvetica, sans-serif;
+.container-header-username {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
-img {
+.header-username {
+  font-size: 16px;
+}
+
+.container-img-avatar {
+  margin-left: 10px;
+  height: 80px;
+  width: 80px;
+}
+
+.img-avatar {
+  vertical-align: middle;
+  height: 100%;
+  width: 100%;
+  border: 1px solid;
+  border-radius: 50%;
+}
+
+.container-header-fullname {
+  margin-left: 10px;
+}
+
+.header-fullname {
+  font-size: 14px;
+}
+
+.container-edit-button {
+  width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.edit-button {
+  width: 100%;
+  margin-bottom: 20px;
+  border-style: ridge;
+  background-color: #ffffff;
+  padding: 5px 9px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.img-post {
+  margin-bottom: 10px;
   width: 500px;
   height: 500px;
+}
+
+.like-button {
+  margin-left: 10px;
 }

@@ -5,8 +5,8 @@ const forms = document.querySelectorAll(".form");
 forms.forEach(form => {
   form.addEventListener("submit", event => {
     event.preventDefault();
-    let button = event.currentTarget.querySelector(".likeButton");
-    let likeCounter = event.currentTarget.querySelector(".likeCounter");
+    let button = event.currentTarget.querySelector(".like-button");
+    let likeCounter = event.currentTarget.querySelector(".like-counter");
 
     const formData = new FormData(form);
 

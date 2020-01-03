@@ -10,6 +10,12 @@ $biography = getUserBiography($_SESSION['user']['id'], $pdo)
     <p>This is the edit settings page.</p>
 </article>
 
+<?php if (isset($_SESSION["user"])) : ?>
+
+    <a class="nav-link" href="/edit-avatar.php">editavatar</a>
+
+<?php endif; ?>
+
 <form action="app/users/edit-settings.php" method="post" enctype="multipart/form-data">
 
     <div>
