@@ -26,3 +26,33 @@ forms.forEach(form => {
       .catch(console.error);
   });
 });
+
+/* show image before upload */
+
+const inpFile = document.getElementById("input-file");
+const previewContainer = document.getElementById("image-id-preview");
+const previewImage = previewContainer.querySelector(".image-preview-image");
+const previewDefaultText = previewContainer.querySelector(
+  ".image-preview-default-text"
+);
+
+inpFile.addEventListener("change", function() {
+  const file = this.files[0];
+
+  if (file) {
+    const reader = new FileReader();
+
+    previewDefaultText.style.display = "none";
+    previewImage.style.display = "block";
+
+    reader.addEventListener("load", function() {
+      previewImage.setAttribute("src", this.result);
+    });
+
+    reader.readAsDataURL(file);
+  } else {
+    previewDefaultText.style.display = null;
+    previewImage.style.display = null;
+    previewImage.setAttribute("src", "");
+  }
+});

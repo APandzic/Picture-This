@@ -169,10 +169,10 @@ if (!function_exists('getUserBiography')) {
      * @param string $userId
      * @param PDO $pdo
      *
-     * @return array
+     * @return string
      *
      */
-    function getUserBiography(string $userId, PDO $pdo): array
+    function getUserBiography(string $userId, PDO $pdo): string
     {
 
         $sql = 'SELECT * FROM biographys WHERE user_id=:id';
@@ -189,7 +189,7 @@ if (!function_exists('getUserBiography')) {
 
         $biography = $statment->fetch(PDO::FETCH_ASSOC);
 
-        return $biography;
+        return $biography['biography'];
     }
 }
 

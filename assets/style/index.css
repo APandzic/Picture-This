@@ -5,21 +5,7 @@
 }
 
 .header-username {
-  font-size: 16px;
-}
-
-.container-img-avatar {
-  margin-left: 10px;
-  height: 80px;
-  width: 80px;
-}
-
-.img-avatar {
-  vertical-align: middle;
-  height: 100%;
-  width: 100%;
-  border: 1px solid;
-  border-radius: 50%;
+  font-size: 24px;
 }
 
 .container-header-fullname {
@@ -27,7 +13,15 @@
 }
 
 .header-fullname {
-  font-size: 14px;
+  font-size: 16px;
+}
+
+.container-biography {
+  margin-left: 10px;
+}
+
+.biography {
+  font-size: 16px;
 }
 
 .container-edit-button {
@@ -53,5 +47,50 @@
 }
 
 .like-button {
+  border: none;
+  margin-top: 6px;
+  margin-bottom: 6px;
   margin-left: 10px;
+  margin-right: 10px;
+  padding: 0px;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.container-like-counter {
+  margin-top: 6px;
+  margin-bottom: 6px;
+  margin-left: 10px;
+  padding: 0px;
+  display: flex;
+  align-items: center;
+}
+
+.like-counter {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-right: 6px;
+  padding: 0px;
+}
+
+.container-post-description {
+  display: flex;
+  flex-direction: row;
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+.post-username {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding: 0px;
+  margin-left: 10px;
+  margin-right: 6px;
+  font-weight: 600;
+}
+
+.post-description {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding: 0px;
 }

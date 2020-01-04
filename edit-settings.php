@@ -6,70 +6,72 @@ unset($_SESSION['message']);
 $biography = getUserBiography($_SESSION['user']['id'], $pdo)
 
 ?>
-<article>
-    <p>This is the edit settings page.</p>
-</article>
+<div class="container-edit-settings">
+    <article>
+        <p>Edit profile and settings</p>
+    </article>
 
-<?php if (isset($_SESSION["user"])) : ?>
+    <div class="container-edit-avatar">
+        <div class="container-img-avatar">
+            <img class="img-avatar" src="<?php echo '/img-avatar/' . $_SESSION['user']['profile_avatar'] ?>" alt="avatar">
+        </div>
 
-    <a class="nav-link" href="/edit-avatar.php">editavatar</a>
+        <?php if (isset($_SESSION["user"])) : ?>
 
-<?php endif; ?>
+            <a href="/edit-avatar.php"><button>Edit profile picture</button></a>
 
-<form action="app/users/edit-settings.php" method="post" enctype="multipart/form-data">
-
-    <div>
-        <label for="username">Username</label>
-        <input type="username" name="username" placeholder="puffy" required>
-        <small>Please provide your new username.</small>
+        <?php endif; ?>
     </div>
 
-    <button type="submit">Change username</button>
-</form>
+    <form action="app/users/edit-settings.php" method="post" enctype="multipart/form-data">
 
-<form action="app/users/edit-settings.php" method="post" enctype="multipart/form-data">
+        <div class="container-inside-form">
+            <label for="username">Username</label>
+            <input type="username" name="username" placeholder="<?php echo $_SESSION['user']['username']; ?>" required>
+        </div>
 
-    <div>
-        <label for="password">Password</label>
-        <input type="password" name="password" required>
-        <small>Please provide your old password (passphrase).</small>
-    </div>
-    <div>
-        <label for="newPassword">New Password</label>
-        <input type="password" name="newPassword" required>
-        <small>Please provide your new password (passphrase).</small>
-    </div>
-    <div>
-        <label for="confirmNewPassword">Confirm New Password</label>
-        <input type="Password" name="confirmNewPassword" required>
-        <small>Please confirm your password (passphrase).</small>
-    </div>
+        <button type="submit">Change username</button>
+    </form>
 
-    <button type="submit">Change Password</button>
-</form>
+    <form action="app/users/edit-settings.php" method="post" enctype="multipart/form-data">
 
-<form action="app/users/edit-settings.php" method="post" enctype="multipart/form-data">
+        <div class="container-inside-form">
+            <label for="password">Password</label>
+            <input type="password" name="password" required>
+        </div>
+        <div class="container-inside-form">
+            <label for="newPassword">New Password</label>
+            <input type="password" name="newPassword" required>
+        </div>
+        <div class="container-inside-form">
+            <label for="confirmNewPassword">Confirm New Password</label>
+            <input type="Password" name="confirmNewPassword" required>
+        </div>
 
-    <div>
-        <label for="email">Email</label>
-        <input type="email" name="email" placeholder="andreas@gmail.com" required>
-        <small>Please provide your new email address.</small>
-    </div>
+        <button type="submit">Change Password</button>
+    </form>
 
-    <button type="submit">change email</button>
-</form>
+    <form action="app/users/edit-settings.php" method="post" enctype="multipart/form-data">
 
-<form action="app/users/edit-settings.php" method="post" enctype="multipart/form-data">
+        <div class="container-inside-form">
+            <label for="email">Email</label>
+            <input type="email" name="email" placeholder="<?php echo $_SESSION['user']['email']; ?>" required>
+        </div>
 
-    <div>
-        <label for="biography">biography</label>
-        <textarea type="text" name="biography" cols="30" rows="10"><?php echo $biography['biography']; ?></textarea>
-        <small>Please provide a descrition of the account in biography</small>
-    </div>
-    <button type="submit">Edit biography</button>
-</form>
+        <button type="submit">change email</button>
+    </form>
+
+    <form action="app/users/edit-settings.php" method="post" enctype="multipart/form-data">
+
+        <div class="container-inside-form">
+            <label for="biography">Biography</label>
+            <textarea type="text" name="biography" cols="30" rows="10"><?php echo $biography; ?></textarea>
+        </div>
+        <button type="submit">Edit biography</button>
+    </form>
 
 
+</div>
 
 
 <?php if ($message !== '') : ?>
