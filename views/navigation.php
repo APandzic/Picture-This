@@ -1,9 +1,14 @@
 <nav class="navbar">
-    <a class="nav-link" href="/index.php">Home</a>
+
+    <?php if (isset($_SESSION["user"])) : ?>
+
+        <a class="nav-link" href="/home.php">Home</a>
+
+    <?php endif; ?>
 
     <?php if (!isset($_SESSION["user"])) : ?>
 
-        <a class="nav-link" href="/login.php">login</a>
+        <a class="nav-link" href="/index.php">login</a>
 
     <?php endif; ?>
 
@@ -15,7 +20,11 @@
 
     <!-- <a class="nav-link" href="/edit-settings.php">editsettings</a> -->
 
-    <a class="nav-link" href="/new-post.php">newpost</a>
+    <?php if (isset($_SESSION["user"])) : ?>
+
+        <a class="nav-link" href="/new-post.php">newpost</a>
+
+    <?php endif; ?>
 
     <?php if (!isset($_SESSION["user"])) : ?>
 

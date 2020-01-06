@@ -14,9 +14,13 @@ require __DIR__ . '/../app/autoload.php';
     <link href="https://unpkg.com/sanitize.css" rel="stylesheet" />
     <link rel="stylesheet" href="/assets/style/main.css">
     <link rel="stylesheet" href="/assets/style/navigation.css">
-    <link rel="stylesheet" href="/assets/style/index.css">
+    <link rel="stylesheet" href="/assets/style/home.css">
     <link rel="stylesheet" href="/assets/style/edit-settings.css">
     <link rel="stylesheet" href="/assets/style/new-post.css">
+    <link rel="stylesheet" href="/assets/style/edit-post.css">
+    <link rel="stylesheet" href="/assets/style/login.css">
+    <link rel="stylesheet" href="/assets/style/edit-avatar.css">
+    <link rel="stylesheet" href="/assets/style/registration.css">
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 </head>
 

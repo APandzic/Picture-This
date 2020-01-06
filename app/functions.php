@@ -177,17 +177,17 @@ if (!function_exists('getUserBiography')) {
 
         $sql = 'SELECT * FROM biographys WHERE user_id=:id';
 
-        $statment = $pdo->prepare($sql);
+        $statement = $pdo->prepare($sql);
 
-        if (!$statment) {
+        if (!$statement) {
             die(var_dump($pdo->errorInfo()));
         }
 
-        $statment->execute([
+        $statement->execute([
             ':id' => $userId,
         ]);
 
-        $biography = $statment->fetch(PDO::FETCH_ASSOC);
+        $biography = $statement->fetch(PDO::FETCH_ASSOC);
 
         return $biography['biography'];
     }

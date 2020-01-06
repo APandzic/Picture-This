@@ -17,16 +17,8 @@
   font-size: 16px;
 }
 
-.custom-file-input {
-  border: 1px solid #000000;
-  border-radius: 3px;
-  padding: 5px 4px;
-  font-weight: 700;
-  font-size: 14px;
-}
-
 .image-preview {
-  width: 480px;
+  width: 100%;
   min-height: 100px;
   border: 2px solid #dddddd;
   margin-top: 15px;

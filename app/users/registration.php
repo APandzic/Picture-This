@@ -69,4 +69,4 @@ if (isset($_POST['firstName'], $_POST['lastName'], $_POST['username'], $_POST['e
     $_SESSION["user"] = $user;
 }
 
-redirect('/');
+redirect('/home.php');

@@ -177,4 +177,4 @@ if (isset($_POST['biography'])) {
 }
 
 
-redirect('/');
+redirect('/home.php');

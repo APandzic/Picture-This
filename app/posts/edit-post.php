@@ -87,4 +87,4 @@ if (isset($_FILES['post'], $_POST['description'], $_GET['id'])) {
     }
 }
 
-redirect('/');
+redirect('/home.php');

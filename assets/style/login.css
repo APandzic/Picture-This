@@ -1,0 +1,47 @@
+.container-login {
+  width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-login article p {
+  font-size: 40px;
+}
+.container-login h1 {
+  font-size: 44px;
+}
+
+.container-form-login {
+}
+
+.container-form-login-email {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.container-form-login-email label {
+  margin-right: 4px;
+}
+
+.container-form-login-password {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.container-form-login-password label {
+  margin-right: 4px;
+}
+
+.container-form-login-button {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}

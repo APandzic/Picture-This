@@ -51,4 +51,4 @@ if (isset($_FILES['post'], $_POST['description'])) {
         ':date' => date(DATE_ATOM),
     ]);
 }
-redirect('/');
+redirect('/home.php');

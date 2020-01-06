@@ -1,0 +1,28 @@
+.container-edit-avatar {
+  width: 100%;
+  height: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.container-edit-avatar img {
+  width: 100%;
+  height: 500px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.container-edit-avatar .image-preview {
+  width: 480px;
+  min-height: 100px;
+  border: 2px solid #dddddd;
+  margin-top: 15px;
+  margin-bottom: 15px;
+
+  /* Default text */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #cccccc;
+}

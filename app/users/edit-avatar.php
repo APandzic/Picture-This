@@ -57,4 +57,4 @@ if (isset($_FILES['avatar'])) {
 
     $_SESSION['user']['profile_avatar'] = $avtarStringName;
 }
-redirect('/edit-avatar');
+redirect('/home.php');

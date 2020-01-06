@@ -11,7 +11,7 @@ $biography = getUserBiography($_SESSION['user']['id'], $pdo)
         <p>Edit profile and settings</p>
     </article>
 
-    <div class="container-edit-avatar">
+    <div class="container-edit-settings-avatar">
         <div class="container-img-avatar">
             <img class="img-avatar" src="<?php echo '/img-avatar/' . $_SESSION['user']['profile_avatar'] ?>" alt="avatar">
         </div>

@@ -26,7 +26,7 @@ if (isset($_POST['email'], $_POST['password'])) {
     // checks users email
     if ($email !== $user['email']) {
         $_SESSION['message'] = 'Whoops! Looks like you missed something. Please try again.';
-        redirect('/login.php');
+        redirect('/index.php');
     }
 
     // checks users password
@@ -37,8 +37,8 @@ if (isset($_POST['email'], $_POST['password'])) {
         $_SESSION["user"] = $user;
     } else {
         $_SESSION['message'] = 'Whoops! Looks like you missed something. Please try again.';
-        redirect('/login.php');
+        redirect('/index.php');
     }
 }
 
-redirect('/');
+redirect('/home.php');
