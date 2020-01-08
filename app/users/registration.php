@@ -16,6 +16,16 @@ if (isset($_POST['firstName'], $_POST['lastName'], $_POST['username'], $_POST['e
     $password = $_POST['password'];
     $confirmPassword = $_POST['confirmPassword'];
 
+    $uppercase = preg_match('@[A-Z]@', $password);
+    $lowercase = preg_match('@[a-z]@', $password);
+    $number    = preg_match('@[0-9]@', $password);
+
+    //check characters in password
+
+    if (!$uppercase || !$lowercase || !$number || strlen($password) < 8) {
+        $_SESSION['message'] = "password aren't strong enough";
+        redirect('/registration.php');
+    }
 
     // check password
     if ($password !== $confirmPassword) {

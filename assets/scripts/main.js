@@ -1,6 +1,7 @@
 "use strict";
 
 const forms = document.querySelectorAll(".form");
+console.log("hej");
 
 forms.forEach(form => {
   form.addEventListener("submit", event => {

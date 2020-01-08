@@ -2,7 +2,7 @@
 
     <?php if (isset($_SESSION["user"])) : ?>
 
-        <a class="nav-link" href="/home.php">Home</a>
+        <a class="nav-link" href="<?php echo "/home.php?id=" . $_SESSION['user']['id']; ?>">Home</a>
 
     <?php endif; ?>
 
@@ -35,6 +35,12 @@
     <?php if (isset($_SESSION["user"])) : ?>
 
         <a href="/app/users/logout.php">logout</a>
+
+    <?php endif; ?>
+
+    <?php if (isset($_SESSION["user"])) : ?>
+
+        <a href="/feed.php">feed</a>
 
     <?php endif; ?>
 </nav>

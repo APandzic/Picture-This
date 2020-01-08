@@ -32,6 +32,7 @@ unset($_SESSION['message']);
         <div>
             <label for="password">Password</label>
             <input type="password" name="password" required>
+            <small>Password must be at least 8 characters, include one upper case letter and one number.</small>
         </div>
         <div>
             <label for="confirmPassword">Confirm Password</label>

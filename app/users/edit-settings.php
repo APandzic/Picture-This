@@ -48,10 +48,21 @@ if (isset($_POST['password'], $_POST['newPassword'], $_POST['confirmNewPassword'
     $newPassword = $_POST['newPassword'];
     $confirmNewPassword = $_POST['confirmNewPassword'];
 
+
+    $uppercase = preg_match('@[A-Z]@', $newPassword);
+    $lowercase = preg_match('@[a-z]@', $newPassword);
+    $number    = preg_match('@[0-9]@', $newPassword);
+
+    //check characters in password
+    if (!$uppercase || !$lowercase || !$number || strlen($newPassword) < 8) {
+        $_SESSION['message'] = "password aren't strong enough";
+        redirect('/edit-settings.php');
+    }
+
     // check new password
     if ($newPassword !== $confirmNewPassword) {
         $_SESSION['message'] = 'Your password and confirmation password do not match';
-        redirect('/registration.php');
+        redirect('/edit-settings.php');
     }
 
     // retrieves user from db
@@ -88,7 +99,7 @@ if (isset($_POST['password'], $_POST['newPassword'], $_POST['confirmNewPassword'
         unset($user['password']); // not sure this is needed.
     } else {
         $_SESSION['message'] = 'Whoops! Looks like your password was incorrect. Please try again.';
-        redirect('/login.php');
+        redirect('/edit-settings.php');
     }
 }
 
@@ -130,6 +141,17 @@ if (isset($_POST['email'])) {
 if (isset($_POST['biography'])) {
     $biography = trim(filter_var($_POST['biography'], FILTER_SANITIZE_STRING));
 
+    // checks characters in biography
+    if (strlen($biography) > 50) {
+        $_SESSION['message'] = 'To many characters used in your biography';
+        redirect('/edit-settings.php');
+    }
+
+    // checks lines in biography
+    if (preg_match('/\A(?>[^\r\n]*(?>\r\n?|\n)){0,3}[^\r\n]*\z/', $biography) === 0) {
+        $_SESSION['message'] = 'Too many line breaks in biography';
+        redirect('/edit-settings.php');
+    }
 
     // retrieves biography from db
     $statement = $pdo->prepare('SELECT * FROM biographys WHERE user_id=:user_id');

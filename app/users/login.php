@@ -41,4 +41,4 @@ if (isset($_POST['email'], $_POST['password'])) {
     }
 }
 
-redirect('/home.php');
+redirect('/home.php?id=' . $_SESSION['user']['id']);

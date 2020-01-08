@@ -4,26 +4,28 @@ require __DIR__ . '/views/header.php';
 $message = $_SESSION['message'] ?? '';
 unset($_SESSION['message']);
 
-print_r($_SESSION['user']);
 ?>
 <div class="container-header-username">
-    <h1 class="header-username"><?php echo $_SESSION['user']['username']; ?></h1>
+    <h1 class="header-username"><?php echo getUsersUsername($_GET['id'], $pdo); ?></h1>
 </div>
 
 <div class="container-img-avatar">
-    <img class="img-avatar" src="<?php echo '/img-avatar/' . $_SESSION['user']['profile_avatar'] ?>" alt="avatar">
+    <img class="img-avatar" src="<?php echo '/img-avatar/' . getUsersAvatar($_GET['id'], $pdo) ?>" alt="avatar">
 </div>
 
 <div class="container-header-fullname">
-    <h1 class="header-fullname"><?php echo ucfirst($_SESSION['user']['first_name']) . ' ' . ucfirst($_SESSION['user']['last_name']); ?></h1>
+    <h1 class="header-fullname"><?php echo ucfirst(getUsersFirstName($_GET['id'], $pdo)) . ' ' . ucfirst(getUsersLastName($_GET['id'], $pdo)); ?></h1>
 </div>
-
 
 <div class="container-biography">
-    <p class="biography"><?php echo getUserBiography($_SESSION['user']['id'], $pdo); ?></p>
+    <?php foreach (getUserBiographyArray($_GET['id'], $pdo) as $row) : ?>
+        <p class="biography"><?php echo $row; ?></p>
+    <?php endforeach; ?>
 </div>
 
-<?php if (isset($_SESSION["user"])) : ?>
+
+
+<?php if ($_SESSION["user"]['id'] === $_GET['id']) : ?>
     <div class="container-edit-button">
         <a href="/edit-settings.php">
             <button class="edit-button">Edit Profile</button>
@@ -32,7 +34,7 @@ print_r($_SESSION['user']);
 <?php endif; ?>
 
 <!-- to print out every post made -->
-<?php foreach (getUserPosts($_SESSION['user']['id'], $pdo) as $post) : ?>
+<?php foreach (getUserPosts($_GET['id'], $pdo) as $post) : ?>
     <a href="<?php echo "edit-post.php?id=" . $post['id'] ?>">
         <img class="img-post" src="<?php echo '/img-posts/' . $post['post_img']; ?>" alt="posts">
     </a>
@@ -45,7 +47,7 @@ print_r($_SESSION['user']);
         </div>
     </form>
     <div class="container-post-description">
-        <p class="post-username"><?php echo $_SESSION['user']['username']; ?></p>
+        <p class="post-username"><?php echo getUsersUsername($_GET['id'], $pdo); ?></p>
         <p class="post-description"><?php echo $post['description']; ?></p>
     </div>
 

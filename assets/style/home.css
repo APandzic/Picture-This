@@ -18,10 +18,15 @@
 
 .container-biography {
   margin-left: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
 }
 
 .biography {
-  font-size: 16px;
+  font-size: 14px;
+  margin: 0px;
+  padding: 0px;
 }
 
 .container-edit-button {

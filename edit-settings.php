@@ -3,7 +3,6 @@ require __DIR__ . '/views/header.php';
 
 $message = $_SESSION['message'] ?? '';
 unset($_SESSION['message']);
-$biography = getUserBiography($_SESSION['user']['id'], $pdo)
 
 ?>
 <div class="container-edit-settings">
@@ -23,6 +22,11 @@ $biography = getUserBiography($_SESSION['user']['id'], $pdo)
         <?php endif; ?>
     </div>
 
+    <?php if ($message !== '') : ?>
+        <p><?php echo $message; ?></p>
+    <?php endif; ?>
+
+
     <form action="app/users/edit-settings.php" method="post" enctype="multipart/form-data">
 
         <div class="container-inside-form">
@@ -38,6 +42,7 @@ $biography = getUserBiography($_SESSION['user']['id'], $pdo)
         <div class="container-inside-form">
             <label for="password">Password</label>
             <input type="password" name="password" required>
+            <small>Password must be at least 8 characters, include one upper case letter and one number.</small>
         </div>
         <div class="container-inside-form">
             <label for="newPassword">New Password</label>
@@ -65,18 +70,14 @@ $biography = getUserBiography($_SESSION['user']['id'], $pdo)
 
         <div class="container-inside-form">
             <label for="biography">Biography</label>
-            <textarea type="text" name="biography" cols="30" rows="10"><?php echo $biography; ?></textarea>
+            <textarea type="text" name="biography" maxlength="100"><?php echo getUserBiographyString($_SESSION['user']['id'], $pdo); ?></textarea>
+            <small>Max 50 characters and 4 lines.</small>
         </div>
         <button type="submit">Edit biography</button>
     </form>
 
 
 </div>
-
-
-<?php if ($message !== '') : ?>
-    <p><?php echo $message; ?></p>
-<?php endif; ?>
 
 
 <?php require __DIR__ . '/views/footer.php'; ?>

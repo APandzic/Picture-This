@@ -10,6 +10,10 @@
   flex-direction: column;
 }
 
+.container-inside-form small {
+  margin-bottom: 10px;
+}
+
 .container-edit-settings-avatar {
   display: flex;
   flex-direction: row;

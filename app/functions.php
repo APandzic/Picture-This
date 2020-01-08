@@ -137,7 +137,7 @@ if (!function_exists('getUserPostById')) {
 
 if (!function_exists('getAllPosts')) {
     /**
-     *
+     *Get one user post
      *
      * @param PDO $pdo
      *
@@ -162,17 +162,167 @@ if (!function_exists('getAllPosts')) {
     }
 }
 
-if (!function_exists('getUserBiography')) {
+if (!function_exists('getUsersAvatar')) {
+    /**
+     *  Get one user avatar
+     *
+     *  @param string $userId
+     * @param PDO $pdo
+     *
+     * @return string
+     */
+    function getUsersAvatar(string $userId, PDO $pdo): string
+    {
+
+        $sql = 'SELECT profile_avatar FROM users WHERE id=:id';
+
+        $statment = $pdo->prepare($sql);
+
+        if (!$statment) {
+            die(var_dump($pdo->errorInfo()));
+        }
+
+        $statment->execute([
+            ':id' => $userId,
+        ]);
+
+        $avatar = $statment->fetch(PDO::FETCH_ASSOC);
+
+        return $avatar['profile_avatar'];
+    }
+}
+
+if (!function_exists('getUsersUsername')) {
+    /**
+     *  Get one user username
+     *
+     *  @param string $userId
+     * @param PDO $pdo
+     *
+     * @return string
+     */
+    function getUsersUsername(string $userId, PDO $pdo): string
+    {
+        $sql = 'SELECT username FROM users WHERE id=:id';
+
+        $statement = $pdo->prepare($sql);
+
+        if (!$statement) {
+            die(var_dump($pdo->errorInfo()));
+        }
+
+        $statement->execute([
+            ':id' => $userId,
+        ]);
+
+        $username = $statement->fetch(PDO::FETCH_ASSOC);
+
+        return $username['username'];
+    }
+}
+
+if (!function_exists('getUsersFirstName')) {
+    /**
+     *  Get one user first name
+     *
+     *  @param string $userId
+     * @param PDO $pdo
+     *
+     * @return string
+     */
+    function getUsersFirstName(string $userId, PDO $pdo): string
+    {
+        $sql = 'SELECT first_name FROM users WHERE id=:id';
+
+        $statement = $pdo->prepare($sql);
+
+        if (!$statement) {
+            die(var_dump($pdo->errorInfo()));
+        }
+
+        $statement->execute([
+            ':id' => $userId,
+        ]);
+
+        $user = $statement->fetch(PDO::FETCH_ASSOC);
+
+        return $user['first_name'];
+    }
+}
+
+if (!function_exists('getUsersLastName')) {
+    /**
+     *  Get one user first name
+     *
+     *  @param string $userId
+     * @param PDO $pdo
+     *
+     * @return string
+     */
+    function getUsersLastName(string $userId, PDO $pdo): string
+    {
+        $sql = 'SELECT last_name FROM users WHERE id=:id';
+
+        $statement = $pdo->prepare($sql);
+
+        if (!$statement) {
+            die(var_dump($pdo->errorInfo()));
+        }
+
+        $statement->execute([
+            ':id' => $userId,
+        ]);
+
+        $user = $statement->fetch(PDO::FETCH_ASSOC);
+
+        return $user['last_name'];
+    }
+}
+
+if (!function_exists('getUserBiographyArray')) {
     /**
      * Get users Biography
      *
      * @param string $userId
      * @param PDO $pdo
      *
-     * @return string
+     * @return array
      *
      */
-    function getUserBiography(string $userId, PDO $pdo): string
+    function getUserBiographyArray(string $userId, PDO $pdo): ?array
+    {
+
+        $sql = 'SELECT * FROM biographys WHERE user_id=:id';
+
+        $statement = $pdo->prepare($sql);
+
+        if (!$statement) {
+            die(var_dump($pdo->errorInfo()));
+        }
+
+        $statement->execute([
+            ':id' => $userId,
+        ]);
+
+        $biography = $statement->fetch(PDO::FETCH_ASSOC);
+
+        $rows = explode("\n", $biography['biography']);
+
+        return $rows;
+    }
+}
+
+if (!function_exists('getUserBiographyString')) {
+    /**
+     * Get users Biography
+     *
+     * @param string $userId
+     * @param PDO $pdo
+     *
+     * @return array
+     *
+     */
+    function getUserBiographyString(string $userId, PDO $pdo): ?string
     {
 
         $sql = 'SELECT * FROM biographys WHERE user_id=:id';
