@@ -3,4 +3,4 @@
 *.png
 *.jpeg
 *.jpg
--/img-avatar/defaultavatar.png
+!/img-avatar/defaultavatar.png
