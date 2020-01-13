@@ -107,70 +107,58 @@ if (inputFileAvatar) {
   });
 }
 
-// live search result
+// search result
 
 const searchForm = document.querySelector(".search-form");
 const searchInput = document.querySelector(".search-input");
+if (searchForm) {
+  searchForm.addEventListener("submit", event => {
+    event.preventDefault();
+    const searchData = new FormData(searchForm);
 
-// searchForm.addEventListener("submit", event => {
-//   event.preventDefault();
-//   const searchData = new FormData(searchForm);
-//   console.log(event);
-
-//   fetch("/app/users/search.php", {
-//     method: "POST",
-//     body: searchData
-//   })
-//     .then(response => response.text())
-//     .then(response => {
-//       console.log(response);
-//     })
-//     .catch(console.error);
-// });
-
-searchInput.addEventListener("keyup", event => {
-  event.preventDefault();
-  const searchData = new FormData(searchForm);
-
-  fetch("/app/users/search.php", {
-    method: "POST",
-    body: searchData
-  })
-    .then(response => response.json())
-    .then(json => {
-      console.log(json);
-      document.getElementById("search-viewer").innerHTML = "";
-
-      if (json.users != "no users") {
+    fetch("/app/users/search.php", {
+      method: "POST",
+      body: searchData
+    })
+      .then(response => response.json())
+      .then(json => {
+        document.getElementById("search-viewer").innerHTML = "";
         json.users.forEach(element => {
-          const template = `<a href="home.php?id=${element.id}">${element.username}</a>`;
+          const template = `<div class="container-img-avatar">
+          <img class="img-avatar" src="/img-avatar/${element.profile_avatar}" alt="avatar">
+      </div><a href="home.php?id=${element.id}">${element.username}</a>`;
           document.getElementById("search-viewer").innerHTML += template;
         });
-      }
+      })
+      .catch(console.error);
+  });
+}
+
+// live search result
+
+if (searchInput) {
+  searchInput.addEventListener("keyup", event => {
+    event.preventDefault();
+    const searchData = new FormData(searchForm);
+
+    fetch("/app/users/search.php", {
+      method: "POST",
+      body: searchData
     })
-    .catch(console.error);
-});
+      .then(response => response.json())
+      .then(json => {
+        console.log(json);
+        document.getElementById("search-viewer").innerHTML = "";
 
-// json.users.forEach(user => {
-//   console.log(user);
-
-//   const template = `
-//   <a href="${user.username}">${user.username}</a>
-//   `;
-//   link.innerHTML = template;
-// });
-
-// let name = [];
-
-// searchInput.addEventListener("input", event => {
-//   event.preventDefault();
-//   name.push(event.data);
-
-//   fetch("app/users/search.php", {
-//     method: "POST",
-//     body: new URLSearchParams("name=" + name.join(""))
-//   })
-//     .then(response => response.text())
-//     .then(response => console.log(response))
-//     .catch(e => console.error("Error: " + e));
-// });
+        if (json.users != "no users") {
+          json.users.forEach(element => {
+            const template = `<div class="container-img-avatar">
+            <img class="img-avatar" src="/img-avatar/${element.profile_avatar}" alt="avatar">
+        </div><a href="home.php?id=${element.id}">${element.username}</a>`;
+            document.getElementById("search-viewer").innerHTML += template;
+          });
+        }
+      })
+      .catch(console.error);
+  });
+}

@@ -22,6 +22,7 @@ require __DIR__ . '/../app/autoload.php';
     <link rel="stylesheet" href="/assets/style/edit-avatar.css">
     <link rel="stylesheet" href="/assets/style/registration.css">
     <link rel="stylesheet" href="/assets/style/feed.css">
+    <link rel="stylesheet" href="/assets/style/follow-list.css">
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 </head>
 

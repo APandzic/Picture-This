@@ -19,14 +19,18 @@ unset($_SESSION['message']);
             <p><span><?php echo count(getUserPosts($_GET['id'], $pdo)); ?></span></p>
             <p>posts</p>
         </div>
-        <div class="inner-container-follow">
-            <p><span class="follow-counter"><?php echo count(getFollowers($_GET['id'], $pdo)); ?></span></p>
-            <p>Followers</p>
-        </div>
-        <div class="inner-container-follow">
-            <p><span><?php echo count(getfollowing($_GET['id'], $pdo)); ?></span></p>
-            <p>Following</p>
-        </div>
+        <a href="<?php echo "follow-list.php?id=" . $_GET['id'] ?>">
+            <div class="inner-container-follow">
+                <p><span class="follow-counter"><?php echo count(getFollowers($_GET['id'], $pdo)); ?></span></p>
+                <p>Followers</p>
+            </div>
+        </a>
+        <a href="<?php echo "follow-list.php?id=" . $_GET['id'] ?>">
+            <div class="inner-container-follow">
+                <p><span><?php echo count(getfollowing($_GET['id'], $pdo)); ?></span></p>
+                <p>Following</p>
+            </div>
+        </a>
     </div>
 </div>
 

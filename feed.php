@@ -8,12 +8,12 @@ unset($_SESSION['message']);
 ?>
 
 <div class="container-feed">
-
     <div class="container-error-message">
         <?php if ($message !== '') : ?>
             <p class="error-message"><?php echo $message; ?></p>
         <?php endif; ?>
     </div>
+
     <?php foreach (getAllPosts($pdo) as $post) : ?>
         <div class="container-feed-post-header">
             <div class="container-img-avatar-feed">
