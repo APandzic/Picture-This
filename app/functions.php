@@ -33,10 +33,10 @@ if (!function_exists('insertUser')) {
      */
     function insertUser(string $firstName, $lastName, $username, $email, $password, $pdo)
     {
-
+        $avatar = "defaultavatar.png";
         $hash = password_hash($password, PASSWORD_DEFAULT);
 
-        $sql = 'INSERT INTO users(first_name, last_name, username, email, password) VALUES(:firstName,:lastName,:username,:email,:password)';
+        $sql = 'INSERT INTO users(first_name, last_name, username, email, password, profile_avatar) VALUES(:firstName,:lastName,:username,:email,:password,:avatar)';
 
         $statment = $pdo->prepare($sql);
 
@@ -50,6 +50,7 @@ if (!function_exists('insertUser')) {
             ':username' => $username,
             ':email' => $email,
             ':password' => $hash,
+            ':avatar' => $avatar,
         ]);
     }
 }
@@ -291,7 +292,6 @@ if (!function_exists('getUserBiographyArray')) {
      */
     function getUserBiographyArray(string $userId, PDO $pdo): ?array
     {
-
         $sql = 'SELECT * FROM biographys WHERE user_id=:id';
 
         $statement = $pdo->prepare($sql);
@@ -306,9 +306,15 @@ if (!function_exists('getUserBiographyArray')) {
 
         $biography = $statement->fetch(PDO::FETCH_ASSOC);
 
-        $rows = explode("\n", $biography['biography']);
+        // if there is a bio in db.
+        if ($biography) {
+            $rows = explode("\n", $biography['biography']);
+            return $rows;
+        }
 
-        return $rows;
+        // if there is no bio in db.
+        $emtyArray = [];
+        return $emtyArray;
     }
 }
 
@@ -354,13 +360,11 @@ if (!function_exists('json_response')) {
      */
     function json_response(array $data = [], int $code = 200): string
     {
-        // First we set the HTTP status code which will default to 200. If you want
-        // to read more about status codes, please visit: https://httpstatuses.com/
+
         http_response_code($code);
-        // We should always specify what kind of data is returned, in this case we
-        // need to set the content type to JSON.
+
         header('Content-Type: application/json');
-        // Conver the JSON data into a string.
+
         return json_encode($data);
     }
 }
@@ -394,18 +398,18 @@ if (!function_exists('getLikes')) {
     }
 }
 
-if (!function_exists('getLikesCounter')) {
+if (!function_exists('getfollowers')) {
     /**
-     * get like count
+     * get all followers
      *
-     * @param string $posts_id
-     * @param PDO $pdo
+     * @param string $id
+     * @param PDO $pde
      *
      * @return string
      */
-    function getLikeCount(String $id, $pdo): string
+    function getfollowers(String $id, $pdo): array
     {
-        $sql = 'SELECT * FROM likes WHERE posts_id=:id';
+        $sql = 'SELECT * FROM follows WHERE follows_id=:id';
 
         $statment = $pdo->prepare($sql);
 
@@ -417,11 +421,38 @@ if (!function_exists('getLikesCounter')) {
             ':id' => $id,
         ]);
 
-        $likes = $statment->fetchAll(PDO::FETCH_ASSOC);
+        $followers = $statment->fetchAll(PDO::FETCH_ASSOC);
 
-        $lenght = strval(count($likes));
+        return $followers;
+    }
+}
 
-        return $lenght;
+if (!function_exists('getfollowing')) {
+    /**
+     * get all user follows.
+     *
+     * @param string $id
+     * @param PDO $pde
+     *
+     * @return string
+     */
+    function getfollowing(String $id, $pdo): array
+    {
+        $sql = 'SELECT * FROM follows WHERE users_id=:id';
+
+        $statment = $pdo->prepare($sql);
+
+        if (!$statment) {
+            die(var_dump($pdo->errorInfo()));
+        }
+
+        $statment->execute([
+            ':id' => $id,
+        ]);
+
+        $following = $statment->fetchAll(PDO::FETCH_ASSOC);
+
+        return $following;
     }
 }
 
@@ -456,6 +487,80 @@ if (!function_exists('checkIfPostIsLiked')) {
         } else {
             $string = "like";
             return $string;
+        }
+    }
+}
+
+if (!function_exists('checkIfUserFollowsAccount')) {
+    /**
+     * Check if user follows account.
+     *
+     * @param string $account_id
+     * @param string $user_id
+     * @param PDO $pdo
+     *
+     * @return string
+     */
+    function checkIfUserFollowsAccount(String $account_id, string $user_id, $pdo): string
+    {
+        $sql = 'SELECT * FROM follows WHERE follows_id=:accountId AND users_id=:userId';
+
+        $statement = $pdo->prepare($sql);
+
+        if (!$statement) {
+            die(var_dump($pdo->errorInfo()));
+        }
+
+        $statement->execute([
+            ':accountId' => $account_id,
+            ':userId' => $user_id,
+        ]);
+
+        if ($statement->fetch()) {
+            $string = "unfollow";
+            return $string;
+        } else {
+            $string = "follow";
+            return $string;
+        }
+    }
+}
+
+if (!function_exists('searchData')) {
+    /**
+     * search after users in db.
+     *
+     * @param string $search
+     * @param PDO $pdo
+     *
+     * @return string
+     */
+    function searchData(String $search, $pdo): array
+    {
+        $search = trim(filter_var($_POST['search'], FILTER_SANITIZE_STRING));
+
+        $sql = "SELECT * FROM users WHERE username LIKE :name OR first_name LIKE :name OR last_name LIKE :name";
+
+        $statement = $pdo->prepare($sql);
+
+        $statement->execute([
+            'name' => "%" . $search . "%",
+        ]);
+
+        $users = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        $result = [];
+
+        foreach ($users as $user) {
+            unset($user['password']);
+            array_push($result, $user);
+        }
+
+        if ($users) {
+            return $result;
+        } else {
+            $_SESSION['message'] = 'sorry, there is no one by this name';
+            redirect('/search.php');
         }
     }
 }

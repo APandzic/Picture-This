@@ -43,4 +43,9 @@
         <a href="/feed.php">feed</a>
 
     <?php endif; ?>
+    <?php if (isset($_SESSION["user"])) : ?>
+
+        <a href="/search.php">search</a>
+
+    <?php endif; ?>
 </nav>

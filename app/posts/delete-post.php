@@ -40,4 +40,4 @@ if (isset($_GET['id'])) {
         unlink(__DIR__ . '/../../imgPosts/' . $oldFilename);
     }
 }
-redirect('/home.php');
+redirect('/home.php?id=' . $_SESSION['user']['id']);

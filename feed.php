@@ -27,12 +27,12 @@ unset($_SESSION['message']);
             <input type="hidden" name="id" value="<?php echo $post['id'] ?>">
             <button class="like-button" type="submit"><?php echo checkIfPostIsLiked($post['id'], $_SESSION['user']['id'], $pdo); ?></button>
             <div class="container-like-counter">
-                <p class="like-counter"><?php echo getLikeCount($post['id'], $pdo); ?></p>
+                <p class="like-counter"><?php echo count(getLikes($post['id'], $pdo)); ?></p>
                 <p class="like-counter"> Likes</p>
             </div>
         </form>
         <div class="container-post-description">
-            <p class="post-username"><?php echo getUsersUsername($post['user_id'], $pdo); ?></p>
+            <a class="post-username" href="<?php echo "home.php?id=" . $post['user_id'] ?>"><?php echo getUsersUsername($post['user_id'], $pdo); ?></a>
             <p class="post-description"><?php echo $post['description']; ?></p>
         </div>
 

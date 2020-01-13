@@ -51,4 +51,4 @@ if (isset($_FILES['post'], $_POST['description'])) {
         ':date' => date(DATE_ATOM),
     ]);
 }
-redirect('/home.php');
+redirect('/home.php?id=' . $_SESSION['user']['id']);

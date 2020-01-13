@@ -199,4 +199,4 @@ if (isset($_POST['biography'])) {
 }
 
 
-redirect('/home.php');
+redirect('/home.php?id=' . $_SESSION['user']['id']);
