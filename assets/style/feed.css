@@ -2,10 +2,8 @@
   width: 100%;
 }
 
-.img-post {
+.container-feed .img-post {
   margin-bottom: 10px;
-  width: 100%;
-  height: 500px;
 }
 
 .container-feed-post-header {

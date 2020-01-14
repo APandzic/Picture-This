@@ -10,6 +10,10 @@ body {
   padding-bottom: 100px;
 }
 
+*:focus {
+  outline: none;
+}
+
 button {
   box-shadow: inset 0px 1px 0px 0px #ffffff;
   background: linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
@@ -33,6 +37,11 @@ input {
   padding: 12px 12px;
   box-sizing: border-box;
   margin-bottom: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: #000000;
 }
 
 label {

@@ -18,7 +18,7 @@
 
 .container-avatar-follow {
   display: flex;
-  width: 100%;
+  width: 90%;
   height: 80px;
   margin-left: 10px;
 }
@@ -86,7 +86,7 @@
 .img-post {
   margin-bottom: 10px;
   width: 100%;
-  height: 500px;
+  height: 100%;
 }
 
 .like-button {

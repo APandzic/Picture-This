@@ -16,7 +16,7 @@ if (isset($_POST['search'])) {
         exit;
     }
 
-    $sql = "SELECT username, (first_name || \" \" || last_name) AS name, profile_avatar FROM users WHERE username LIKE :name OR name LIKE :name";
+    $sql = "SELECT username, (first_name || \" \" || last_name) AS name, profile_avatar, id FROM users WHERE username LIKE :name OR name LIKE :name";
 
     $statement = $pdo->prepare($sql);
 

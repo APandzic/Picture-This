@@ -32,9 +32,17 @@ unset($_SESSION['message']);
 
 
         <div class="container-form-login-button">
-            <button type="submit">Login</button>
+            <button type="submit" class="button-login">Login</button>
         </div>
     </form>
+
+    <div>
+        <a class="nav-link" href="/registration.php"><button class="button-registration">registration</button></a>
+    </div>
+
+
+
+
 </div>
 
 

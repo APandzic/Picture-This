@@ -17,7 +17,7 @@ unset($_SESSION['message']);
 
         <?php if (isset($_SESSION["user"])) : ?>
 
-            <a href="/edit-avatar.php"><button>Edit profile picture</button></a>
+            <a href="/edit-avatar.php"><button class="button-edit-profile">Edit profile picture</button></a>
 
         <?php endif; ?>
     </div>
@@ -25,6 +25,14 @@ unset($_SESSION['message']);
     <?php if ($message !== '') : ?>
         <p><?php echo $message; ?></p>
     <?php endif; ?>
+
+    <div>
+        <?php if (isset($_SESSION["user"])) : ?>
+
+            <a href="/app/users/logout.php"><button class="button-logout">Logout</button></a>
+
+        <?php endif; ?>
+    </div>
 
 
     <form action="app/users/edit-settings.php" method="post" enctype="multipart/form-data">

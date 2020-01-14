@@ -22,7 +22,7 @@
   margin-top: 30px;
 }
 
-.container-form-registration div {
+.container-form-registration .registration-div {
   width: 100%;
   display: flex;
   justify-content: flex-start;
@@ -31,4 +31,24 @@
 
 .container-form-registration label {
   font-size: 24px;
+}
+
+.button-login {
+  width: 135px;
+}
+
+.button-registration {
+  margin-top: 20px;
+}
+
+.container-registration-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.container-registration-button button {
+  width: 100px;
+  margin-left: 10px;
+  margin-right: 10px;
 }

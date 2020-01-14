@@ -112,7 +112,7 @@ if (inputFileAvatar) {
 const searchForm = document.querySelector(".search-form");
 const searchInput = document.querySelector(".search-input");
 if (searchForm) {
-  searchForm.addEventListener("submit", event => {
+  searchForm.addEventListener("input", event => {
     event.preventDefault();
     const searchData = new FormData(searchForm);
 
@@ -124,9 +124,13 @@ if (searchForm) {
       .then(json => {
         document.getElementById("search-viewer").innerHTML = "";
         json.users.forEach(element => {
-          const template = `<div class="container-img-avatar">
+          const template = `
+          <div class="container-search-viewer">
+          <div class="container-img-avatar">
           <img class="img-avatar" src="/img-avatar/${element.profile_avatar}" alt="avatar">
-      </div><a href="home.php?id=${element.id}">${element.username}</a>`;
+          </div>
+          <a class="hyperlink-username" href="home.php?id=${element.id}">${element.username}</a>
+          </div>`;
           document.getElementById("search-viewer").innerHTML += template;
         });
       })
@@ -152,9 +156,14 @@ if (searchInput) {
 
         if (json.users != "no users") {
           json.users.forEach(element => {
-            const template = `<div class="container-img-avatar">
+            console.log(element.id);
+            const template = `
+            <div class="container-search-viewer">
+            <div class="container-img-avatar">
             <img class="img-avatar" src="/img-avatar/${element.profile_avatar}" alt="avatar">
-        </div><a href="home.php?id=${element.id}">${element.username}</a>`;
+            </div>
+            <a class="hyperlink-username" href="home.php?id=${element.id}">${element.username}</a>
+            </div>`;
             document.getElementById("search-viewer").innerHTML += template;
           });
         }
