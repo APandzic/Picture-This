@@ -2,10 +2,30 @@
 Assignment from school to create a social media clone entirely in HTML, CSS, JavaScript and PHP.
 
 
-__The assignment had to consist of:__
-* 
-* 
+__The assignment requirements:__
+* As a user I should be able to create an account. 
+* As a user I should be able to login.
+* As a user I should be able to logout.
+* As a user I should be able to edit my account email, password and biography.
+* As a user I should be able to upload a profile avatar image.
+* As a user I should be able to create new posts with image and description.
+* As a user I should be able to edit my posts.
+* As a user I should be able to delete my posts.
+* As a user I should be able to like posts.
+* As a user I should be able to remove likes from posts.
 
+__Fulfilled requirements:__
+* All the features above is met.
+
+### Extra features: 
+
+* As a user I'm able to follow and unfollow other users.
+* As a user I'm able to view a list of posts by users I follow.
+* As a user I'm able to search for other users. 
+
+### Hidden features. Need to know before use. 
+
+* To be able to edit your posts you need to be on your home page and click on the image.
 
 ### Prerequisites
 
@@ -44,9 +64,6 @@ php -S localhost:8000
 * PHP
 
 __We were not allowed to use any other language or framework for this assignment.__
-
-## Features
-* 
 
 
 ## Responsive Design and compatibility
