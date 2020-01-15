@@ -63,10 +63,11 @@ unset($_SESSION['message']);
         </div>
     <?php endif; ?>
 
-    <div class="container-block"></div>
+
 
     <!-- if no post is made -->
     <?php if (count(getUserPosts($_GET['id'], $pdo)) === 0 && $_SESSION["user"]['id'] === $_GET['id']) : ?>
+        <div class="container-block"></div>
         <div class="container-no-post">
             <img class="img-icon-no-post" src="/img-icons/add.png" alt="icon-add">
             <h1>Share photos</h1>
@@ -74,6 +75,7 @@ unset($_SESSION['message']);
         </div>
     <?php endif; ?>
     <?php if (count(getUserPosts($_GET['id'], $pdo)) === 0 && $_SESSION["user"]['id'] !== $_GET['id']) : ?>
+        <div class="container-block"></div>
         <div class="container-no-post">
             <h1>This user has no post</h1>
         </div>
