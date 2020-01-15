@@ -70,7 +70,6 @@ __We were not allowed to use any other language or framework for this assignment
 
 
 __Browsers:__
-- [] Brave
 - [] Google Chrome
 - [] Firefox
 - [] Safari
