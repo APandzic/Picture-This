@@ -63,6 +63,23 @@ unset($_SESSION['message']);
         </div>
     <?php endif; ?>
 
+    <div class="container-block"></div>
+
+    <!-- if no post is made -->
+    <?php if (count(getUserPosts($_GET['id'], $pdo)) === 0 && $_SESSION["user"]['id'] === $_GET['id']) : ?>
+        <div class="container-no-post">
+            <img class="img-icon-no-post" src="/img-icons/add.png" alt="icon-add">
+            <h1>Share photos</h1>
+            <p>when you share photos, they'll appear on your profile</p>
+        </div>
+    <?php endif; ?>
+    <?php if (count(getUserPosts($_GET['id'], $pdo)) === 0 && $_SESSION["user"]['id'] !== $_GET['id']) : ?>
+        <div class="container-no-post">
+            <h1>This user has no post</h1>
+        </div>
+    <?php endif; ?>
+
+
     <!-- to print out every post made -->
     <?php foreach (getUserPosts($_GET['id'], $pdo) as $post) : ?>
         <div class="container-home-post">
