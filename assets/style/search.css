@@ -15,7 +15,7 @@
 }
 
 .search-input {
-  width: 80%;
+  width: 100%;
 }
 
 .container-search .container-img-avatar {
@@ -37,4 +37,15 @@
 
 .container-search-viewer .hyperlink-username {
   margin-left: 5px;
+}
+
+@media only screen and (min-width: 501px) {
+  .container-search {
+    width: 60%;
+    height: 100%;
+  }
+
+  .search-input {
+    margin-top: 10px;
+  }
 }

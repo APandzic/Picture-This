@@ -68,7 +68,7 @@ unset($_SESSION['message']);
 
         <div class="container-inside-form">
             <label for="email">Email</label>
-            <input type="email" name="email" placeholder="<?php echo $_SESSION['user']['email']; ?>" required>
+            <input type="email" name="email" required>
         </div>
 
         <button type="submit">change email</button>

@@ -30,3 +30,10 @@
   text-shadow: none;
   color: #ffffff;
 }
+
+@media only screen and (min-width: 501px) {
+  .container-edit-post {
+    width: 60%;
+    height: 100%;
+  }
+}

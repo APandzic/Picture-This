@@ -16,9 +16,6 @@
   font-size: 44px;
 }
 
-.container-form-login {
-}
-
 .container-form-login-email {
   display: flex;
   justify-content: flex-end;
@@ -44,4 +41,11 @@
   display: flex;
   justify-content: center;
   margin-top: 40px;
+}
+
+@media only screen and (min-width: 501px) {
+  .container-login {
+    width: 60%;
+    height: 100%;
+  }
 }
