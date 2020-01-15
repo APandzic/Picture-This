@@ -82,8 +82,8 @@ __Browsers:__
 * **Andreas Pandzic** - *Initial work* - [Andreas](https://apandzic.github.io)
 
 ## Testers
-* 
-* 
+* Viktor Sjöblom
+* Betsy Alva Soplin
 
 
 ## License
