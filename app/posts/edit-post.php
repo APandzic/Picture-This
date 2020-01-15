@@ -63,6 +63,7 @@ if (isset($_FILES['post'], $_POST['description'], $_GET['id'])) {
 
         $oldFilename = $oldpost['post_img'];
 
+
         //update to new filename in db
 
         $pahtArray = explode("/", $destination);
@@ -79,6 +80,7 @@ if (isset($_FILES['post'], $_POST['description'], $_GET['id'])) {
             ':post_img' => $postStringName,
             ':id' => $id,
         ]);
+
 
         // delets old avatar file.
         if ($oldFilename !== NULL) {
