@@ -4,3 +4,5 @@
 *.jpeg
 *.jpg
 !/img-avatar/defaultavatar.png
+!/img-avatar
+!/img-posts

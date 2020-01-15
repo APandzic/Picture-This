@@ -50,11 +50,11 @@ if (isset($_FILES['avatar'])) {
         ':id' => $_SESSION['user']['id'],
     ]);
 
+
     // delets old avatar file.
-    if ($oldFilename !== NULL) {
+    if ($oldFilename !== NULL && $oldFilename !== "defaultavatar.png") {
         unlink(__DIR__ . '/../../img-avatar/' . $oldFilename);
     }
-
     $_SESSION['user']['profile_avatar'] = $avtarStringName;
 }
 redirect('/home.php?id=' . $_SESSION['user']['id']);
