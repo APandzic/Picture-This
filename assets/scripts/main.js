@@ -1,5 +1,4 @@
 "use strict";
-
 const forms = document.querySelectorAll(".form");
 
 //like buttom
@@ -151,12 +150,10 @@ if (searchInput) {
     })
       .then(response => response.json())
       .then(json => {
-        console.log(json);
         document.getElementById("search-viewer").innerHTML = "";
 
         if (json.users != "no users") {
           json.users.forEach(element => {
-            console.log(element.id);
             const template = `
             <div class="container-search-viewer">
             <div class="container-img-avatar">
