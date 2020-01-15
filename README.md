@@ -16,8 +16,23 @@ UBUNTU SERVER or MAMPA.
 
 ### Installing
 
-Clone or Fork the repository
-Open index.html from the *Picture-This* folder in your local server, ex localhost:8888.
+
+1. Clone the repository
+
+```
+$ git clone https://github.com/ViktorSjoblom/picture-this
+```
+
+2. Navigate to the folder where you cloned the repository via the terminal
+
+3. Start a local server
+```
+php -S localhost:8000
+```
+
+4. Open up your favorite browser and enter localhost:8888/index.php in the url
+
+5. Enjoy!
 
 
 
@@ -25,7 +40,7 @@ Open index.html from the *Picture-This* folder in your local server, ex localhos
 
 * HTML
 * CSS
-* JAVASCRIPT
+* JAVASCRIPT Vanilla
 * PHP
 
 __We were not allowed to use any other language or framework for this assignment.__
