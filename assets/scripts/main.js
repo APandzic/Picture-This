@@ -106,6 +106,27 @@ if (inputFileAvatar) {
   });
 }
 
+// Replace old post with new before change
+
+const inputFilepost = document.getElementById("input-file-edit-post");
+const imageEditpost = document.querySelector(".image-edit-post");
+
+if (inputFilepost) {
+  inputFilepost.addEventListener("change", function() {
+    const file = this.files[0];
+
+    if (file) {
+      const reader = new FileReader();
+
+      reader.addEventListener("load", function() {
+        imageEditpost.setAttribute("src", "");
+        imageEditpost.setAttribute("src", this.result);
+      });
+      reader.readAsDataURL(file);
+    }
+  });
+}
+
 // search result
 
 const searchForm = document.querySelector(".search-form");

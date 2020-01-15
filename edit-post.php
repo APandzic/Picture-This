@@ -21,13 +21,13 @@ $post = getUserPostbyid($_GET['id'], $pdo);
         </tr>
     </tbody>
 
-    <img src="<?php echo '/img-posts/' . $post['post_img']; ?>" alt="posts">
+    <img class="image-edit-post" src="<?php echo '/img-posts/' . $post['post_img']; ?>" alt="posts">
 
     <form action="<?php echo "/app/posts/edit-post.php?id=" . $post['id'] ?>" method="post" enctype="multipart/form-data">
 
         <div>
             <label for="post">Change image to upload</label>
-            <input class="custom-file-input" type="file" name="post" accept=".png, .jpg, .jpeg">
+            <input id="input-file-edit-post" class="custom-file-input" type="file" name="post" accept=".png, .jpg, .jpeg">
         </div>
         <div>
             <label for="description">Change Description</label>
