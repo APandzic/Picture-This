@@ -20,7 +20,7 @@ UBUNTU SERVER or MAMPA.
 1. Clone the repository
 
 ```
-$ git clone https://github.com/ViktorSjoblom/picture-this
+$ git clone https://github.com/APandzic/Picture-This
 ```
 
 2. Navigate to the folder where you cloned the repository via the terminal
