@@ -21,7 +21,7 @@ if (isset($_FILES['avatar'])) {
         redirect('/edit-avatar.php');
     }
 
-    if ($avatar['size'] >= 3145728) {
+    if ($avatar['size'] >= 31457280) {
         $_SESSION['message'] = 'The uploaded file ' . $avatar['name'] . ' exceeded the filesize limit.';
         redirect('/edit-avatar.php');
     }
