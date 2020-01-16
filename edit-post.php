@@ -21,7 +21,7 @@ $post = getUserPostbyid($_GET['id'], $pdo);
         </tr>
     </tbody>
 
-    <img class="image-edit-post" src="<?php echo '/img-posts/' . $post['post_img']; ?>" alt="posts" loading="lazy">
+    <img class="image-edit-post" src="<?php echo '/img-posts/' . $post['post_img']; ?>" alt="posts">
 
     <form action="<?php echo "/app/posts/edit-post.php?id=" . $post['id'] ?>" method="post" enctype="multipart/form-data">
 

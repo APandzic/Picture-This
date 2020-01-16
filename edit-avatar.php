@@ -11,7 +11,7 @@ unset($_SESSION['message']);
         <p><?php echo $message; ?></p>
     <?php endif; ?>
 
-    <img class="image-edit-avatar" src="<?php echo '/img-avatar/' . $_SESSION['user']['profile_avatar']; ?>" alt="profile picture" loading="lazy">
+    <img class="image-edit-avatar" src="<?php echo '/img-avatar/' . $_SESSION['user']['profile_avatar']; ?>" alt="profile picture">
 
     <form action="app/users/edit-avatar.php" method="post" enctype="multipart/form-data">
         <div>

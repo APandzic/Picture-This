@@ -18,11 +18,13 @@ unset($_SESSION['message']);
         <div class="container-feed-post">
             <div class="container-feed-post-header">
                 <div class="container-img-avatar-feed">
-                    <img class="img-avatar" src="<?php echo '/img-avatar/' . getUsersAvatar($post['user_id'], $pdo) ?>" alt="avatar" loading="lazy">
+                    <img class="img-avatar" src="<?php echo '/img-avatar/' . getUsersAvatar($post['user_id'], $pdo) ?>" alt="avatar">
                 </div>
                 <p><?php echo getUsersUsername($post['user_id'], $pdo); ?></p>
             </div>
-            <img class="img-post" src="<?php echo '/img-posts/' . $post['post_img']; ?>" alt="posts" loading="lazy">
+            <div class="container-img-posts">
+                <img class="img-post" src="<?php echo '/img-posts/' . $post['post_img']; ?>" alt="posts">
+            </div>
 
             <form class="form like-form" method="post">
                 <input type="hidden" name="id" value="<?php echo $post['id'] ?>">
