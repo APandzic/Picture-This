@@ -18,7 +18,7 @@ if (isset($_FILES['post'], $_POST['description'])) {
         redirect('/new-post.php');
     }
 
-    if ($post['size'] >= 31457280) {
+    if ($post['size'] >= 3145728) {
         $_SESSION['message'] = 'The uploaded file ' . $post['name'] . ' exceeded the filesize limit.';
         redirect('/new-post.php');
     }
