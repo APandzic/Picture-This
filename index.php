@@ -7,6 +7,10 @@ unset($_SESSION['message']);
 
 ?>
 
+<?php if (isset($_SESSION["user"])) : ?>
+    <?php redirect('/home.php?id=' . $_SESSION['user']['id']); ?>
+<?php endif; ?>
+
 <div class="container-login">
     <article>
         <p>Welcome</p>
