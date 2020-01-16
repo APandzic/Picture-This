@@ -19,7 +19,7 @@ unset($_SESSION['message']);
             <label for="post">Choose a image to upload</label>
             <input class="custom-file-input" id="input-file" type="file" name="post" accept=".png, .jpg, .jpeg" required>
             <div class="image-preview" id="image-id-preview">
-                <img src="" alt="Image Preview" class="image-preview-image">
+                <img src="" alt="Image Preview" class="image-preview-image" loading="lazy">
                 <span class="image-preview-default-text">Image Preview</span>
             </div>
         </div>

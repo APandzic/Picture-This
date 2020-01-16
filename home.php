@@ -13,7 +13,7 @@ unset($_SESSION['message']);
 
     <div class="container-avatar-follow">
         <div class="container-img-avatar">
-            <img class="img-avatar" src="<?php echo '/img-avatar/' . getUsersAvatar($_GET['id'], $pdo) ?>" alt="avatar">
+            <img class="img-avatar" src="<?php echo '/img-avatar/' . getUsersAvatar($_GET['id'], $pdo) ?>" alt="avatar" loading="lazy">
         </div>
 
         <div class="container-follow-counter">
@@ -69,7 +69,7 @@ unset($_SESSION['message']);
     <?php if (count(getUserPosts($_GET['id'], $pdo)) === 0 && $_SESSION["user"]['id'] === $_GET['id']) : ?>
         <div class="container-block"></div>
         <div class="container-no-post">
-            <img class="img-icon-no-post" src="/img-icons/add.png" alt="icon-add">
+            <img class="img-icon-no-post" src="/img-icons/add.png" alt="icon-add" loading="lazy">
             <h1>Share photos</h1>
             <p>when you share photos, they'll appear on your profile</p>
         </div>
@@ -87,16 +87,16 @@ unset($_SESSION['message']);
         <div class="container-home-post">
             <div class="container-feed-post-header">
                 <div class="container-img-avatar-feed">
-                    <img class="img-avatar" src="<?php echo '/img-avatar/' . getUsersAvatar($post['user_id'], $pdo) ?>" alt="avatar">
+                    <img class="img-avatar" src="<?php echo '/img-avatar/' . getUsersAvatar($post['user_id'], $pdo) ?>" alt="avatar" loading="lazy">
                 </div>
                 <p><?php echo getUsersUsername($post['user_id'], $pdo); ?></p>
             </div>
             <?php if ($_SESSION["user"]['id'] === $_GET['id']) : ?>
                 <a href="<?php echo "edit-post.php?id=" . $post['id'] ?>">
-                    <img class="img-post" src="<?php echo '/img-posts/' . $post['post_img']; ?>" alt="posts">
+                    <img class="img-post" src="<?php echo '/img-posts/' . $post['post_img']; ?>" alt="posts" loading="lazy">
                 </a>
             <?php else : ?>
-                <img class="img-post" src="<?php echo '/img-posts/' . $post['post_img']; ?>" alt="posts">
+                <img class="img-post" src="<?php echo '/img-posts/' . $post['post_img']; ?>" alt="posts" loading="lazy">
             <?php endif; ?>
             <form class="form like-form" method="post">
                 <input type="hidden" name="id" value="<?php echo $post['id'] ?>">

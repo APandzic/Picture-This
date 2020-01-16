@@ -89,7 +89,24 @@ __Browsers:__
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
 
-## Code Review
+
+## Code review - Daniel Thorsen
+1. You can break out:
+$message = $_SESSION[‘message’] ?? ‘’; unset($_SESSION[‘message’]);
+Into a file, place it for example in view and then require that file where users gets messages.
+2. If you comment in the functions under /app it is easier for another developer to understand what the different steps do and why.
+3. You can place
+$userId = $_SESSION[‘user’][‘id’]
+in /autoload.php and then use the variable instead since you use it many times and the variable name describe the usage.
+4. Nice funtions - Well described
+5. Echo out the profile-name in the alt-tag + avatar. Maybe add the post-description to the alt-tag on post, but it might be too long.
+6. Add loading=“lazy”  on images in post and those beneath the folder will be lazy-loaded and the user load the feed quicker.
+7.  Why no GIF-support? Everyone loves a fun GIF!
+8. Instead of
+<?php echo count(getLikes($post[‘id’], $pdo)); ?>
+You can count and return this in SQL. That will go quicker and save memory and CPU.
+9. Maybe give the user a confirm message when logged out.
+10.  edit-settings.php lines 52-54 - The preg_match-functions can be done in one line with regEX.
 
 YRGO 2019
 

@@ -16,7 +16,7 @@ unset($_SESSION['message']);
                 <a href="/home.php?id=<?php echo $user['users_id']; ?>">
                     <div class="container-follow-list-avatar-username">
                         <div class="container-img-avatar">
-                            <img class="img-avatar" src="<?php echo '/img-avatar/' . getUsersAvatar($_GET['id'], $pdo) ?>" alt="avatar">
+                            <img class="img-avatar" src="<?php echo '/img-avatar/' . getUsersAvatar($_GET['id'], $pdo) ?>" alt="avatar" loading="lazy">
                         </div>
                         <p class="hyperlink-username"><?php echo getUsersUsername($user['follows_id'], $pdo); ?></p>
                     </div>
@@ -29,7 +29,7 @@ unset($_SESSION['message']);
                 <a href="/home.php?id=<?php echo $user['follows_id']; ?>">
                     <div class="container-follow-list-avatar-username">
                         <div class="container-img-avatar">
-                            <img class="img-avatar" src="<?php echo '/img-avatar/' . getUsersAvatar($_GET['id'], $pdo) ?>" alt="avatar">
+                            <img class="img-avatar" src="<?php echo '/img-avatar/' . getUsersAvatar($_GET['id'], $pdo) ?>" alt="avatar" loading="lazy">
                         </div>
                         <p class="hyperlink-username"><?php echo getUsersUsername($user['follows_id'], $pdo); ?></p>
                     </div>
