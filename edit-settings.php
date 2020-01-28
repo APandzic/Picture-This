@@ -84,6 +84,12 @@ unset($_SESSION['message']);
         <button type="submit">Edit biography</button>
     </form>
 
+    <form class="form-delete" action="/app/users/delete.php" method="get" enctype="multipart/form-data">
+
+        <button class="button-logout" type="submit" name="delete-account" value="<?php echo $_SESSION['user']['id'] ?>">Delete Account</button>
+
+    </form>
+
 
 </div>
 

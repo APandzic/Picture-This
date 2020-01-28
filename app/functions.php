@@ -563,4 +563,44 @@ if (!function_exists('searchData')) {
             redirect('/search.php');
         }
     }
+
+    if (!function_exists('getComments')) {
+        /**
+         * Get all comments from database
+         *
+         * @param pdo $pdo
+         * @param int $postId
+         * @return void
+         */
+
+        function getComments($pdo, $postId)
+        {
+            $sql = "SELECT users.username, comments.content, comments.id FROM users INNER JOIN comments ON comments.user_id = users.id WHERE comments.post_id = :postid";
+
+            $statement = $pdo->prepare($sql);
+
+            $statement->execute([
+                ':postid' => $postId
+            ]);
+
+            $comments = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+            return $comments;
+        }
+    }
+    /**
+     * Fetch all posts and add them to the feed
+     *
+     * @param pdo $pdo
+     * @return void
+     */
+
+    function getFeed($pdo)
+    {
+        $getFeed = $pdo->query('SELECT posts.id, posts.user_id, posts.post_img, posts.description, users.first_name, users.last_name FROM posts INNER JOIN users ON users.id = posts.user_id ORDER BY posts.id DESC');
+
+        $feedPosts = $getFeed->fetchAll(PDO::FETCH_ASSOC);
+
+        return $feedPosts;
+    }
 }
