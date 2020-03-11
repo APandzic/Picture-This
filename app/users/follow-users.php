@@ -10,7 +10,6 @@ header("Content-Type: application/json");
 // In this file we edit posts
 
 if (isset($_POST['id'])) {
-
     $id = filter_var($_POST['id'], FILTER_SANITIZE_STRING);
 
     $statement = $pdo->prepare('SELECT * FROM follows WHERE follows_id=:follows_id and users_id=:user_id');
@@ -25,7 +24,6 @@ if (isset($_POST['id'])) {
     ]);
 
     if ($statement->fetch()) {
-
         $statement = $pdo->prepare('DELETE FROM follows WHERE follows_id=:follows_id and users_id=:user_id');
 
         if (!$statement) {

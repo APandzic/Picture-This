@@ -7,7 +7,6 @@ require __DIR__ . '/../autoload.php';
 // In this file we login users.
 
 if (isset($_POST['email'], $_POST['password'])) {
-
     $email = trim(filter_var($_POST['email'], FILTER_SANITIZE_EMAIL));
 
 
@@ -31,7 +30,6 @@ if (isset($_POST['email'], $_POST['password'])) {
 
     // checks users password
     if (password_verify($_POST['password'], $user['password'])) {
-
         unset($user['password']);
 
         $_SESSION["user"] = $user;

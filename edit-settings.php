@@ -78,7 +78,7 @@ unset($_SESSION['message']);
 
         <div class="container-inside-form">
             <label for="biography">Biography</label>
-            <textarea type="text" name="biography" maxlength="100"><?php echo getUserBiographyString($_SESSION['user']['id'], $pdo); ?></textarea>
+            <textarea placeholder="add a comment" type="text" name="biography" maxlength="100"><?php echo getUserBiographyString($_SESSION['user']['id'], $pdo); ?></textarea>
             <small>Max 50 characters and 4 lines.</small>
         </div>
         <button type="submit">Edit biography</button>

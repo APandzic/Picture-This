@@ -86,7 +86,6 @@ if (!function_exists('getUserPosts')) {
      */
     function getUserPosts(string $userId, PDO $pdo): array
     {
-
         $sql = 'SELECT * FROM posts WHERE user_id=:id ORDER BY date DESC';
 
         $statment = $pdo->prepare($sql);
@@ -117,7 +116,6 @@ if (!function_exists('getUserPostById')) {
      */
     function getUserPostbyid(string $postId, PDO $pdo): array
     {
-
         $sql = 'SELECT * FROM posts WHERE id=:id';
 
         $statment = $pdo->prepare($sql);
@@ -146,7 +144,6 @@ if (!function_exists('getAllPosts')) {
      */
     function getAllPosts(PDO $pdo): array
     {
-
         $sql = 'SELECT * FROM posts ORDER BY date DESC';
 
         $statment = $pdo->prepare($sql);
@@ -174,7 +171,6 @@ if (!function_exists('getUsersAvatar')) {
      */
     function getUsersAvatar(string $userId, PDO $pdo): string
     {
-
         $sql = 'SELECT profile_avatar FROM users WHERE id=:id';
 
         $statment = $pdo->prepare($sql);
@@ -330,7 +326,6 @@ if (!function_exists('getUserBiographyString')) {
      */
     function getUserBiographyString(string $userId, PDO $pdo): ?string
     {
-
         $sql = 'SELECT * FROM biographys WHERE user_id=:id';
 
         $statement = $pdo->prepare($sql);
@@ -360,7 +355,6 @@ if (!function_exists('json_response')) {
      */
     function json_response(array $data = [], int $code = 200): string
     {
-
         http_response_code($code);
 
         header('Content-Type: application/json');

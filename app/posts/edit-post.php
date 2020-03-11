@@ -9,7 +9,6 @@ require __DIR__ . '/../autoload.php';
 
 
 if (isset($_FILES['post'], $_POST['description'], $_GET['id'])) {
-
     $id = trim(filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT));
     $description = trim(filter_var($_POST['description'], FILTER_SANITIZE_STRING));
     $post = $_FILES['post'];
@@ -83,7 +82,7 @@ if (isset($_FILES['post'], $_POST['description'], $_GET['id'])) {
 
 
         // delets old avatar file.
-        if ($oldFilename !== NULL) {
+        if ($oldFilename !== null) {
             unlink(__DIR__ . '/../../img-posts/' . $oldFilename);
         }
     }

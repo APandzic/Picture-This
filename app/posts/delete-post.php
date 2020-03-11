@@ -7,7 +7,6 @@ require __DIR__ . '/../autoload.php';
 
 // In this file we delete posts
 if (isset($_GET['id'])) {
-
     $id = filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT);
 
     // gets old filename and saves into variable
@@ -36,7 +35,7 @@ if (isset($_GET['id'])) {
         ':id' => $id,
     ]);
 
-    if ($oldFilename !== NULL) {
+    if ($oldFilename !== null) {
         unlink(__DIR__ . '/../../imgPosts/' . $oldFilename);
     }
 }

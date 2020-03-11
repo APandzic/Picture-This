@@ -8,7 +8,6 @@ require __DIR__ . '/../autoload.php';
 // In this file we upload a new post.
 
 if (isset($_FILES['post'], $_POST['description'])) {
-
     $post = $_FILES['post'];
     $description = trim(filter_var($_POST['description'], FILTER_SANITIZE_STRING));
 

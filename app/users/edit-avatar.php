@@ -52,7 +52,7 @@ if (isset($_FILES['avatar'])) {
 
 
     // delets old avatar file.
-    if ($oldFilename !== NULL && $oldFilename !== "defaultavatar.png") {
+    if ($oldFilename !== null && $oldFilename !== "defaultavatar.png") {
         unlink(__DIR__ . '/../../img-avatar/' . $oldFilename);
     }
     $_SESSION['user']['profile_avatar'] = $avtarStringName;

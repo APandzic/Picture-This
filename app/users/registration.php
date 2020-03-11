@@ -8,7 +8,6 @@ require __DIR__ . '/../autoload.php';
 // In this file we register new users.
 
 if (isset($_POST['firstName'], $_POST['lastName'], $_POST['username'], $_POST['email'], $_POST['password'], $_POST['confirmPassword'])) {
-
     $firstName = trim(filter_var($_POST['firstName'], FILTER_SANITIZE_STRING));
     $lastName = trim(filter_var($_POST['lastName'], FILTER_SANITIZE_STRING));
     $username = trim(filter_var($_POST['username'], FILTER_SANITIZE_STRING));
@@ -48,7 +47,6 @@ if (isset($_POST['firstName'], $_POST['lastName'], $_POST['username'], $_POST['e
     $user = $statement->fetch(PDO::FETCH_ASSOC);
 
     if ($user) {
-
         if ($user['email'] === $email) {
             $_SESSION['message'] = 'This email is already registered';
             redirect('/registration.php');

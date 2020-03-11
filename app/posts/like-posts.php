@@ -10,8 +10,8 @@ header("Content-Type: application/json");
 // In this file we edit posts
 
 if (isset($_POST['id'])) {
-
-    $id = filter_var($_POST['id'], FILTER_SANITIZE_STRING);;
+    $id = filter_var($_POST['id'], FILTER_SANITIZE_STRING);
+    ;
 
     $statement = $pdo->prepare('SELECT * FROM likes WHERE posts_id=:post_id and users_id=:user_id');
 
@@ -25,7 +25,6 @@ if (isset($_POST['id'])) {
     ]);
 
     if ($statement->fetch()) {
-
         $statement = $pdo->prepare('DELETE FROM likes WHERE posts_id=:post_id and users_id=:user_id');
 
         if (!$statement) {
