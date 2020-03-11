@@ -1,4 +1,4 @@
-<?php if (isset($_SESSION["user"])) : ?>
+<?php if (isset($_SESSION['user'])) { ?>
     <nav class="navbar">
 
         <div class="container-img-nav">
@@ -20,10 +20,10 @@
         </div>
 
         <div class="container-img-nav">
-            <a href="<?php echo "/home.php?id=" . $_SESSION['user']['id']; ?>">
-                <img class="img-icon" src="<?php echo '/img-avatar/' . getUsersAvatar($_SESSION['user']['id'], $pdo) ?>" alt="avatar">
+            <a href="<?php echo '/home.php?id='.$_SESSION['user']['id']; ?>">
+                <img class="img-icon" src="<?php echo '/img-avatar/'.getUsersAvatar($_SESSION['user']['id'], $pdo) ?>" alt="avatar">
             </a>
         </div>
 
     </nav>
-<?php endif; ?>
+<?php } ?>

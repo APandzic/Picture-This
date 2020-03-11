@@ -2,16 +2,14 @@
 
 declare(strict_types=1);
 
+require __DIR__.'/../autoload.php';
 
-require __DIR__ . '/../autoload.php';
-
-header("Content-Type: application/json");
+header('Content-Type: application/json');
 
 // In this file we edit posts
 
 if (isset($_POST['id'])) {
     $id = filter_var($_POST['id'], FILTER_SANITIZE_STRING);
-    ;
 
     $statement = $pdo->prepare('SELECT * FROM likes WHERE posts_id=:post_id and users_id=:user_id');
 
@@ -41,7 +39,7 @@ if (isset($_POST['id'])) {
         $lenght = strval(count($likes));
 
         echo json_response([
-            'id' => $id,
+            'id'     => $id,
             'counts' => $lenght,
         ]);
     } else {
@@ -60,7 +58,7 @@ if (isset($_POST['id'])) {
         $lenght = strval(count($likes));
 
         echo json_response([
-            'id' => $id,
+            'id'     => $id,
             'counts' => $lenght,
         ]);
     }

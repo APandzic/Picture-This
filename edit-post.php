@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/views/header.php';
+require __DIR__.'/views/header.php';
 
 $message = $_SESSION['message'] ?? '';
 unset($_SESSION['message']);
@@ -11,19 +11,19 @@ $post = getUserPostbyid($_GET['id'], $pdo);
         <p>This is the edit post page.</p>
     </article>
 
-    <?php if ($message !== '') : ?>
+    <?php if ($message !== '') { ?>
         <p><?php echo $message; ?></p>
-    <?php endif; ?>
+    <?php } ?>
 
     <tbody>
         <tr>
-            <td><a href="<?php echo "/app/posts/delete-post.php?id=" . $post['id'] . "&name=" . $post['post_img'] ?>"><button class="delete-buttom">Delete</button></a></td>
+            <td><a href="<?php echo '/app/posts/delete-post.php?id='.$post['id'].'&name='.$post['post_img'] ?>"><button class="delete-buttom">Delete</button></a></td>
         </tr>
     </tbody>
 
-    <img class="image-edit-post" src="<?php echo '/img-posts/' . $post['post_img']; ?>" alt="posts">
+    <img class="image-edit-post" src="<?php echo '/img-posts/'.$post['post_img']; ?>" alt="posts">
 
-    <form action="<?php echo "/app/posts/edit-post.php?id=" . $post['id'] ?>" method="post" enctype="multipart/form-data">
+    <form action="<?php echo '/app/posts/edit-post.php?id='.$post['id'] ?>" method="post" enctype="multipart/form-data">
 
         <div>
             <label for="post">Change image to upload</label>
@@ -37,5 +37,5 @@ $post = getUserPostbyid($_GET['id'], $pdo);
     </form>
 
 
-    <?php require __DIR__ . '/views/footer.php'; ?>
+    <?php require __DIR__.'/views/footer.php'; ?>
 </div>

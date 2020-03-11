@@ -1,13 +1,13 @@
 <?php
-require __DIR__ . '/views/header.php';
+require __DIR__.'/views/header.php';
 
 $message = $_SESSION['message'] ?? '';
 unset($_SESSION['message']);
 
 ?>
-<?php if ($message !== '') : ?>
+<?php if ($message !== '') { ?>
     <p><?php echo $message; ?></p>
-<?php endif; ?>
+<?php } ?>
 
 <div class="container-search">
     <form class="search-form" method="POST" autocomplete="on">
@@ -20,4 +20,4 @@ unset($_SESSION['message']);
     </ul>
 </div>
 
-<?php require __DIR__ . '/views/footer.php'; ?>
+<?php require __DIR__.'/views/footer.php'; ?>

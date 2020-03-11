@@ -1,15 +1,15 @@
 <?php
 
-require __DIR__ . '/views/header.php';
+require __DIR__.'/views/header.php';
 
 $message = $_SESSION['message'] ?? '';
 unset($_SESSION['message']);
 
 ?>
 
-<?php if (isset($_SESSION["user"])) : ?>
-    <?php redirect('/home.php?id=' . $_SESSION['user']['id']); ?>
-<?php endif; ?>
+<?php if (isset($_SESSION['user'])) { ?>
+    <?php redirect('/home.php?id='.$_SESSION['user']['id']); ?>
+<?php } ?>
 
 <div class="container-login">
     <article>
@@ -29,9 +29,9 @@ unset($_SESSION['message']);
             <input type="password" name="password" required>
         </div>
         <div class="container-error-message">
-            <?php if ($message !== '') : ?>
+            <?php if ($message !== '') { ?>
                 <p class="error-message"><?php echo $message; ?></p>
-            <?php endif; ?>
+            <?php } ?>
         </div>
 
 
@@ -50,4 +50,4 @@ unset($_SESSION['message']);
 </div>
 
 
-<?php require __DIR__ . '/views/footer.php'; ?>
+<?php require __DIR__.'/views/footer.php'; ?>

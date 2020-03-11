@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/views/header.php';
+require __DIR__.'/views/header.php';
 
 $message = $_SESSION['message'] ?? '';
 unset($_SESSION['message']);
@@ -7,11 +7,11 @@ unset($_SESSION['message']);
 ?>
 
 <div class="container-edit-avatar">
-    <?php if ($message !== '') : ?>
+    <?php if ($message !== '') { ?>
         <p><?php echo $message; ?></p>
-    <?php endif; ?>
+    <?php } ?>
 
-    <img class="image-edit-avatar" src="<?php echo '/img-avatar/' . $_SESSION['user']['profile_avatar']; ?>" alt="profile picture">
+    <img class="image-edit-avatar" src="<?php echo '/img-avatar/'.$_SESSION['user']['profile_avatar']; ?>" alt="profile picture">
 
     <form action="app/users/edit-avatar.php" method="post" enctype="multipart/form-data">
         <div>
@@ -23,4 +23,4 @@ unset($_SESSION['message']);
     </form>
 </div>
 
-<?php require __DIR__ . '/views/footer.php'; ?>
+<?php require __DIR__.'/views/footer.php'; ?>

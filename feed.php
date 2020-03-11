@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__ . '/views/header.php';
+require __DIR__.'/views/header.php';
 
 $message = $_SESSION['message'] ?? '';
 unset($_SESSION['message']);
@@ -9,21 +9,21 @@ unset($_SESSION['message']);
 
 <div class="container-feed">
     <div class="container-error-message">
-        <?php if ($message !== '') : ?>
+        <?php if ($message !== '') { ?>
             <p class="error-message"><?php echo $message; ?></p>
-        <?php endif; ?>
+        <?php } ?>
     </div>
 
-    <?php foreach (getAllPosts($pdo) as $post) : ?>
+    <?php foreach (getAllPosts($pdo) as $post) { ?>
         <div class="container-feed-post">
             <div class="container-feed-post-header">
                 <div class="container-img-avatar-feed">
-                    <img class="img-avatar" src="<?php echo '/img-avatar/' . getUsersAvatar($post['user_id'], $pdo) ?>" alt="avatar">
+                    <img class="img-avatar" src="<?php echo '/img-avatar/'.getUsersAvatar($post['user_id'], $pdo) ?>" alt="avatar">
                 </div>
                 <p><?php echo getUsersUsername($post['user_id'], $pdo); ?></p>
             </div>
             <div class="container-img-posts">
-                <img class="img-post" src="<?php echo '/img-posts/' . $post['post_img']; ?>" alt="posts">
+                <img class="img-post" src="<?php echo '/img-posts/'.$post['post_img']; ?>" alt="posts">
             </div>
 
             <form class="form like-form" method="post">
@@ -35,12 +35,12 @@ unset($_SESSION['message']);
                 </div>
             </form>
             <div class="container-post-description">
-                <a class="post-username" href="<?php echo "home.php?id=" . $post['user_id'] ?>"><?php echo getUsersUsername($post['user_id'], $pdo); ?></a>
+                <a class="post-username" href="<?php echo 'home.php?id='.$post['user_id'] ?>"><?php echo getUsersUsername($post['user_id'], $pdo); ?></a>
                 <p class="post-description"><?php echo $post['description']; ?></p>
             </div>
-            <?php foreach (getComments($pdo, $post['id']) as $comment) : ?>
+            <?php foreach (getComments($pdo, $post['id']) as $comment) { ?>
                 <div class="comment-list">
-                    <p> <?php echo $comment['username'] . ': ' . $comment['content'];  ?></p>
+                    <p> <?php echo $comment['username'].': '.$comment['content']; ?></p>
 
                     <div class="comment-icons">
                         <form class="form-editcomment" action="app/posts/edit-comment.php" method="POST" enctype="multipart/form-data" name="editcomment">
@@ -56,7 +56,7 @@ unset($_SESSION['message']);
                         </form>
                     </div>
                 </div>
-            <?php endforeach; ?>
+            <?php } ?>
             <form action="/app/posts/comment.php" method="post">
                 <div class="comment-container">
                     <input type="hidden" name="postid" value="<?= $post['id'] ?>">
@@ -66,9 +66,9 @@ unset($_SESSION['message']);
             </form>
 
         </div>
-    <?php endforeach; ?>
+    <?php } ?>
 
 
 </div>
 
-<?php require __DIR__ . '/views/footer.php'; ?>
+<?php require __DIR__.'/views/footer.php'; ?>

@@ -2,13 +2,12 @@
 
 declare(strict_types=1);
 
-require __DIR__ . '/../autoload.php';
+require __DIR__.'/../autoload.php';
 
 // In this file we login users.
 
 if (isset($_POST['email'], $_POST['password'])) {
     $email = trim(filter_var($_POST['email'], FILTER_SANITIZE_EMAIL));
-
 
     $statement = $pdo->prepare('SELECT * FROM users WHERE email=:email');
 
@@ -32,11 +31,11 @@ if (isset($_POST['email'], $_POST['password'])) {
     if (password_verify($_POST['password'], $user['password'])) {
         unset($user['password']);
 
-        $_SESSION["user"] = $user;
+        $_SESSION['user'] = $user;
     } else {
         $_SESSION['message'] = 'Whoops! Looks like you missed something. Please try again.';
         redirect('/index.php');
     }
 }
 
-redirect('/home.php?id=' . $_SESSION['user']['id']);
+redirect('/home.php?id='.$_SESSION['user']['id']);

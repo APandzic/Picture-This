@@ -2,11 +2,9 @@
 
 declare(strict_types=1);
 
-
-require __DIR__ . '/../autoload.php';
+require __DIR__.'/../autoload.php';
 
 // In this file we change settings.
-
 
 if (isset($_POST['username'])) {
     $username = trim(filter_var($_POST['username'], FILTER_SANITIZE_STRING));
@@ -36,7 +34,7 @@ if (isset($_POST['username'])) {
 
     $statement->execute([
         ':username' => $username,
-        ':id' => $_SESSION['user']['id'],
+        ':id'       => $_SESSION['user']['id'],
     ]);
 
     $_SESSION['user']['username'] = $username;
@@ -47,10 +45,9 @@ if (isset($_POST['password'], $_POST['newPassword'], $_POST['confirmNewPassword'
     $newPassword = $_POST['newPassword'];
     $confirmNewPassword = $_POST['confirmNewPassword'];
 
-
     $uppercase = preg_match('@[A-Z]@', $newPassword);
     $lowercase = preg_match('@[a-z]@', $newPassword);
-    $number    = preg_match('@[0-9]@', $newPassword);
+    $number = preg_match('@[0-9]@', $newPassword);
 
     //check characters in password
     if (!$uppercase || !$lowercase || !$number || strlen($newPassword) < 8) {
@@ -77,7 +74,6 @@ if (isset($_POST['password'], $_POST['newPassword'], $_POST['confirmNewPassword'
 
     $user = $statement->fetch(PDO::FETCH_ASSOC);
 
-
     // check if users password is correct
     if (password_verify($oldPassword, $user['password'])) {
 
@@ -92,7 +88,7 @@ if (isset($_POST['password'], $_POST['newPassword'], $_POST['confirmNewPassword'
 
         $statement->execute([
             ':password' => $hash,
-            ':id' => $_SESSION['user']['id'],
+            ':id'       => $_SESSION['user']['id'],
         ]);
 
         unset($user['password']); // not sure this is needed.
@@ -130,7 +126,7 @@ if (isset($_POST['email'])) {
 
     $statement->execute([
         ':email' => $email,
-        ':id' => $_SESSION['user']['id'],
+        ':id'    => $_SESSION['user']['id'],
     ]);
 
     $_SESSION['user']['email'] = $email;
@@ -176,7 +172,7 @@ if (isset($_POST['biography'])) {
         }
 
         $statment->execute([
-            ':id' => $_SESSION['user']['id'],
+            ':id'        => $_SESSION['user']['id'],
             ':biography' => $biography,
         ]);
     } else {
@@ -190,11 +186,10 @@ if (isset($_POST['biography'])) {
         }
 
         $statment->execute([
-            ':id' => $_SESSION['user']['id'],
+            ':id'        => $_SESSION['user']['id'],
             ':biography' => $biography,
         ]);
     }
 }
 
-
-redirect('/home.php?id=' . $_SESSION['user']['id']);
+redirect('/home.php?id='.$_SESSION['user']['id']);

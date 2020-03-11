@@ -2,8 +2,7 @@
 
 declare(strict_types=1);
 
-
-require __DIR__ . '/../autoload.php';
+require __DIR__.'/../autoload.php';
 
 // In this file we upload a new post.
 
@@ -18,21 +17,21 @@ if (isset($_FILES['post'], $_POST['description'])) {
     }
 
     if ($post['size'] >= 3145728) {
-        $_SESSION['message'] = 'The uploaded file ' . $post['name'] . ' exceeded the filesize limit.';
+        $_SESSION['message'] = 'The uploaded file '.$post['name'].' exceeded the filesize limit.';
         redirect('/new-post.php');
     }
 
     if ($post['type'] === 'image/jpeg' || $post['type'] === 'image/jpg' || $post['type'] === 'image/png') {
-        $destination = __DIR__ . '/../../img-posts/' . createUniqueFileName($_SESSION['user']['username'], $post["name"]);
+        $destination = __DIR__.'/../../img-posts/'.createUniqueFileName($_SESSION['user']['username'], $post['name']);
         move_uploaded_file($post['tmp_name'], $destination);
     } else {
-        $_SESSION['message'] = 'The ' . $post['name'] . ' image file type is not allowed.';
+        $_SESSION['message'] = 'The '.$post['name'].' image file type is not allowed.';
         redirect('/new-post.php');
     }
 
     // update post into DB.
 
-    $pahtArray = explode("/", $destination);
+    $pahtArray = explode('/', $destination);
     $postStringName = end($pahtArray);
 
     $sql = 'INSERT INTO posts(user_id, post_img, description, date) VALUES(:user_id,:post_img,:description,:date)';
@@ -44,10 +43,10 @@ if (isset($_FILES['post'], $_POST['description'])) {
     }
 
     $statment->execute([
-        ':user_id' => $_SESSION['user']['id'],
-        ':post_img' => $postStringName,
+        ':user_id'     => $_SESSION['user']['id'],
+        ':post_img'    => $postStringName,
         ':description' => $description,
-        ':date' => date(DATE_ATOM),
+        ':date'        => date(DATE_ATOM),
     ]);
 }
-redirect('/home.php?id=' . $_SESSION['user']['id']);
+redirect('/home.php?id='.$_SESSION['user']['id']);

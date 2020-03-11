@@ -2,8 +2,7 @@
 
 declare(strict_types=1);
 
-
-require __DIR__ . '/../autoload.php';
+require __DIR__.'/../autoload.php';
 
 // In this file we delete posts
 if (isset($_GET['id'])) {
@@ -36,7 +35,7 @@ if (isset($_GET['id'])) {
     ]);
 
     if ($oldFilename !== null) {
-        unlink(__DIR__ . '/../../imgPosts/' . $oldFilename);
+        unlink(__DIR__.'/../../imgPosts/'.$oldFilename);
     }
 }
-redirect('/home.php?id=' . $_SESSION['user']['id']);
+redirect('/home.php?id='.$_SESSION['user']['id']);

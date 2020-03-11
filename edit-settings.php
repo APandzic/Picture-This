@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/views/header.php';
+require __DIR__.'/views/header.php';
 
 $message = $_SESSION['message'] ?? '';
 unset($_SESSION['message']);
@@ -12,26 +12,26 @@ unset($_SESSION['message']);
 
     <div class="container-edit-settings-avatar">
         <div class="container-img-avatar">
-            <img class="img-avatar" src="<?php echo '/img-avatar/' . $_SESSION['user']['profile_avatar'] ?>" alt="avatar">
+            <img class="img-avatar" src="<?php echo '/img-avatar/'.$_SESSION['user']['profile_avatar'] ?>" alt="avatar">
         </div>
 
-        <?php if (isset($_SESSION["user"])) : ?>
+        <?php if (isset($_SESSION['user'])) { ?>
 
             <a href="/edit-avatar.php"><button class="button-edit-profile">Edit profile picture</button></a>
 
-        <?php endif; ?>
+        <?php } ?>
     </div>
 
-    <?php if ($message !== '') : ?>
+    <?php if ($message !== '') { ?>
         <p><?php echo $message; ?></p>
-    <?php endif; ?>
+    <?php } ?>
 
     <div>
-        <?php if (isset($_SESSION["user"])) : ?>
+        <?php if (isset($_SESSION['user'])) { ?>
 
             <a href="/app/users/logout.php"><button class="button-logout">Logout</button></a>
 
-        <?php endif; ?>
+        <?php } ?>
     </div>
 
 
@@ -94,4 +94,4 @@ unset($_SESSION['message']);
 </div>
 
 
-<?php require __DIR__ . '/views/footer.php'; ?>
+<?php require __DIR__.'/views/footer.php'; ?>

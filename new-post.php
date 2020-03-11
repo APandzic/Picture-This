@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/views/header.php';
+require __DIR__.'/views/header.php';
 
 $message = $_SESSION['message'] ?? '';
 unset($_SESSION['message']);
@@ -10,9 +10,9 @@ unset($_SESSION['message']);
     <article>
         <p>This is the new post page.</p>
     </article>
-    <?php if ($message !== '') : ?>
+    <?php if ($message !== '') { ?>
         <p><?php echo $message; ?></p>
-    <?php endif; ?>
+    <?php } ?>
 
     <form action="app/posts/new-post.php" method="post" enctype="multipart/form-data">
         <div>
@@ -32,4 +32,4 @@ unset($_SESSION['message']);
     </form>
 </div>
 
-<?php require __DIR__ . '/views/footer.php'; ?>
+<?php require __DIR__.'/views/footer.php'; ?>

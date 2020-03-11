@@ -2,8 +2,6 @@
 
 declare(strict_types=1);
 
-
-
 if (!function_exists('redirect')) {
     /**
      * Redirect the user to given path.
@@ -29,11 +27,10 @@ if (!function_exists('insertUser')) {
      * @param type $email
      * @param type $password
      * @param type $pdo
-     *
      */
     function insertUser(string $firstName, $lastName, $username, $email, $password, $pdo)
     {
-        $avatar = "defaultavatar.png";
+        $avatar = 'defaultavatar.png';
         $hash = password_hash($password, PASSWORD_DEFAULT);
 
         $sql = 'INSERT INTO users(first_name, last_name, username, email, password, profile_avatar) VALUES(:firstName,:lastName,:username,:email,:password,:avatar)';
@@ -46,11 +43,11 @@ if (!function_exists('insertUser')) {
 
         $statment->execute([
             ':firstName' => $firstName,
-            ':lastName' => $lastName,
-            ':username' => $username,
-            ':email' => $email,
-            ':password' => $hash,
-            ':avatar' => $avatar,
+            ':lastName'  => $lastName,
+            ':username'  => $username,
+            ':email'     => $email,
+            ':password'  => $hash,
+            ':avatar'    => $avatar,
         ]);
     }
 }
@@ -63,12 +60,11 @@ if (!function_exists('createUniqueFileName')) {
      * @param type $filename
      *
      * @return string variable
-     *
      */
     function createUniqueFileName(string $username, $filename)
     {
-        $temp = explode(".", $filename);
-        $newfilename = time() . $username . '.' . end($temp);
+        $temp = explode('.', $filename);
+        $newfilename = time().$username.'.'.end($temp);
 
         return $newfilename;
     }
@@ -79,10 +75,9 @@ if (!function_exists('getUserPosts')) {
      * Get all user posts.
      *
      * @param string $userId
-     * @param PDO $pdo
+     * @param PDO    $pdo
      *
      * @return array
-     *
      */
     function getUserPosts(string $userId, PDO $pdo): array
     {
@@ -106,13 +101,12 @@ if (!function_exists('getUserPosts')) {
 
 if (!function_exists('getUserPostById')) {
     /**
-     * Get one user post
+     * Get one user post.
      *
      * @param string $userId
-     * @param PDO $pdo
+     * @param PDO    $pdo
      *
      * @return array
-     *
      */
     function getUserPostbyid(string $postId, PDO $pdo): array
     {
@@ -136,7 +130,7 @@ if (!function_exists('getUserPostById')) {
 
 if (!function_exists('getAllPosts')) {
     /**
-     *Get one user post
+     *Get one user post.
      *
      * @param PDO $pdo
      *
@@ -162,7 +156,7 @@ if (!function_exists('getAllPosts')) {
 
 if (!function_exists('getUsersAvatar')) {
     /**
-     *  Get one user avatar
+     *  Get one user avatar.
      *
      *  @param string $userId
      * @param PDO $pdo
@@ -191,7 +185,7 @@ if (!function_exists('getUsersAvatar')) {
 
 if (!function_exists('getUsersUsername')) {
     /**
-     *  Get one user username
+     *  Get one user username.
      *
      *  @param string $userId
      * @param PDO $pdo
@@ -220,7 +214,7 @@ if (!function_exists('getUsersUsername')) {
 
 if (!function_exists('getUsersFirstName')) {
     /**
-     *  Get one user first name
+     *  Get one user first name.
      *
      *  @param string $userId
      * @param PDO $pdo
@@ -249,7 +243,7 @@ if (!function_exists('getUsersFirstName')) {
 
 if (!function_exists('getUsersLastName')) {
     /**
-     *  Get one user first name
+     *  Get one user first name.
      *
      *  @param string $userId
      * @param PDO $pdo
@@ -278,13 +272,12 @@ if (!function_exists('getUsersLastName')) {
 
 if (!function_exists('getUserBiographyArray')) {
     /**
-     * Get users Biography
+     * Get users Biography.
      *
      * @param string $userId
-     * @param PDO $pdo
+     * @param PDO    $pdo
      *
      * @return array
-     *
      */
     function getUserBiographyArray(string $userId, PDO $pdo): ?array
     {
@@ -305,24 +298,25 @@ if (!function_exists('getUserBiographyArray')) {
         // if there is a bio in db.
         if ($biography) {
             $rows = explode("\n", $biography['biography']);
+
             return $rows;
         }
 
         // if there is no bio in db.
         $emtyArray = [];
+
         return $emtyArray;
     }
 }
 
 if (!function_exists('getUserBiographyString')) {
     /**
-     * Get users Biography
+     * Get users Biography.
      *
      * @param string $userId
-     * @param PDO $pdo
+     * @param PDO    $pdo
      *
      * @return array
-     *
      */
     function getUserBiographyString(string $userId, PDO $pdo): ?string
     {
@@ -349,7 +343,7 @@ if (!function_exists('json_response')) {
      * Create and return a JSON response.
      *
      * @param array $data
-     * @param int $code
+     * @param int   $code
      *
      * @return string
      */
@@ -365,14 +359,14 @@ if (!function_exists('json_response')) {
 
 if (!function_exists('getLikes')) {
     /**
-     * get all likes
+     * get all likes.
      *
      * @param string $id
-     * @param PDO $pde
+     * @param PDO    $pde
      *
      * @return string
      */
-    function getLikes(String $id, $pdo): array
+    function getLikes(string $id, $pdo): array
     {
         $sql = 'SELECT * FROM likes WHERE posts_id=:id';
 
@@ -394,14 +388,14 @@ if (!function_exists('getLikes')) {
 
 if (!function_exists('getfollowers')) {
     /**
-     * get all followers
+     * get all followers.
      *
      * @param string $id
-     * @param PDO $pde
+     * @param PDO    $pde
      *
      * @return string
      */
-    function getfollowers(String $id, $pdo): array
+    function getfollowers(string $id, $pdo): array
     {
         $sql = 'SELECT * FROM follows WHERE follows_id=:id';
 
@@ -426,11 +420,11 @@ if (!function_exists('getfollowing')) {
      * get all user follows.
      *
      * @param string $id
-     * @param PDO $pde
+     * @param PDO    $pde
      *
      * @return string
      */
-    function getfollowing(String $id, $pdo): array
+    function getfollowing(string $id, $pdo): array
     {
         $sql = 'SELECT * FROM follows WHERE users_id=:id';
 
@@ -456,11 +450,11 @@ if (!function_exists('checkIfPostIsLiked')) {
      *
      * @param string $posts_id
      * @param string $user_id
-     * @param PDO $pdo
+     * @param PDO    $pdo
      *
      * @return string
      */
-    function checkIfPostIsLiked(String $posts_id, string $user_id, $pdo): string
+    function checkIfPostIsLiked(string $posts_id, string $user_id, $pdo): string
     {
         $sql = 'SELECT * FROM likes WHERE posts_id=:postId AND users_id=:userId';
 
@@ -476,10 +470,12 @@ if (!function_exists('checkIfPostIsLiked')) {
         ]);
 
         if ($statement->fetch()) {
-            $string = "unlike";
+            $string = 'unlike';
+
             return $string;
         } else {
-            $string = "like";
+            $string = 'like';
+
             return $string;
         }
     }
@@ -491,11 +487,11 @@ if (!function_exists('checkIfUserFollowsAccount')) {
      *
      * @param string $account_id
      * @param string $user_id
-     * @param PDO $pdo
+     * @param PDO    $pdo
      *
      * @return string
      */
-    function checkIfUserFollowsAccount(String $account_id, string $user_id, $pdo): string
+    function checkIfUserFollowsAccount(string $account_id, string $user_id, $pdo): string
     {
         $sql = 'SELECT * FROM follows WHERE follows_id=:accountId AND users_id=:userId';
 
@@ -507,14 +503,16 @@ if (!function_exists('checkIfUserFollowsAccount')) {
 
         $statement->execute([
             ':accountId' => $account_id,
-            ':userId' => $user_id,
+            ':userId'    => $user_id,
         ]);
 
         if ($statement->fetch()) {
-            $string = "unfollow";
+            $string = 'unfollow';
+
             return $string;
         } else {
-            $string = "follow";
+            $string = 'follow';
+
             return $string;
         }
     }
@@ -525,20 +523,20 @@ if (!function_exists('searchData')) {
      * search after users in db.
      *
      * @param string $search
-     * @param PDO $pdo
+     * @param PDO    $pdo
      *
      * @return string
      */
-    function searchData(String $search, $pdo): array
+    function searchData(string $search, $pdo): array
     {
         $search = trim(filter_var($_POST['search'], FILTER_SANITIZE_STRING));
 
-        $sql = "SELECT * FROM users WHERE username LIKE :name OR first_name LIKE :name OR last_name LIKE :name";
+        $sql = 'SELECT * FROM users WHERE username LIKE :name OR first_name LIKE :name OR last_name LIKE :name';
 
         $statement = $pdo->prepare($sql);
 
         $statement->execute([
-            'name' => "%" . $search . "%",
+            'name' => '%'.$search.'%',
         ]);
 
         $users = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -560,21 +558,21 @@ if (!function_exists('searchData')) {
 
     if (!function_exists('getComments')) {
         /**
-         * Get all comments from database
+         * Get all comments from database.
          *
          * @param pdo $pdo
          * @param int $postId
+         *
          * @return void
          */
-
         function getComments($pdo, $postId)
         {
-            $sql = "SELECT users.username, comments.content, comments.id FROM users INNER JOIN comments ON comments.user_id = users.id WHERE comments.post_id = :postid";
+            $sql = 'SELECT users.username, comments.content, comments.id FROM users INNER JOIN comments ON comments.user_id = users.id WHERE comments.post_id = :postid';
 
             $statement = $pdo->prepare($sql);
 
             $statement->execute([
-                ':postid' => $postId
+                ':postid' => $postId,
             ]);
 
             $comments = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -583,12 +581,12 @@ if (!function_exists('searchData')) {
         }
     }
     /**
-     * Fetch all posts and add them to the feed
+     * Fetch all posts and add them to the feed.
      *
      * @param pdo $pdo
+     *
      * @return void
      */
-
     function getFeed($pdo)
     {
         $getFeed = $pdo->query('SELECT posts.id, posts.user_id, posts.post_img, posts.description, users.first_name, users.last_name FROM posts INNER JOIN users ON users.id = posts.user_id ORDER BY posts.id DESC');

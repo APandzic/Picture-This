@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__ . '/views/header.php';
+require __DIR__.'/views/header.php';
 
 $message = $_SESSION['message'] ?? '';
 unset($_SESSION['message']);
@@ -42,9 +42,9 @@ unset($_SESSION['message']);
             <input type="Password" name="confirmPassword" required>
         </div>
 
-        <?php if ($message !== '') : ?>
+        <?php if ($message !== '') { ?>
             <p><?php echo $message; ?></p>
-        <?php endif; ?>
+        <?php } ?>
 
         <div class="container-registration-button">
             <button type="submit">Create</button>
@@ -54,4 +54,4 @@ unset($_SESSION['message']);
 </div>
 
 
-<?php require __DIR__ . '/views/footer.php'; ?>
+<?php require __DIR__.'/views/footer.php'; ?>

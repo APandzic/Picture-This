@@ -2,18 +2,16 @@
 
 declare(strict_types=1);
 
-
-require __DIR__ . '/../autoload.php';
+require __DIR__.'/../autoload.php';
 
 // In this file we edit posts
-
 
 if (isset($_FILES['post'], $_POST['description'], $_GET['id'])) {
     $id = trim(filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT));
     $description = trim(filter_var($_POST['description'], FILTER_SANITIZE_STRING));
     $post = $_FILES['post'];
 
-    if ($post['name'] === "") {
+    if ($post['name'] === '') {
         $statement = $pdo->prepare('UPDATE posts SET description=:description WHERE id=:id');
 
         if (!$statement) {
@@ -22,11 +20,11 @@ if (isset($_FILES['post'], $_POST['description'], $_GET['id'])) {
 
         $statement->execute([
             ':description' => $description,
-            ':id' => $id,
+            ':id'          => $id,
         ]);
     }
 
-    if ($post['name'] !== "") {
+    if ($post['name'] !== '') {
 
         // validates the file and change file name.
         if (count($_FILES) > 1) {
@@ -35,15 +33,15 @@ if (isset($_FILES['post'], $_POST['description'], $_GET['id'])) {
         }
 
         if ($post['size'] >= 3145728) {
-            $_SESSION['message'] = 'The uploaded file ' . $post['name'] . ' exceeded the filesize limit.';
+            $_SESSION['message'] = 'The uploaded file '.$post['name'].' exceeded the filesize limit.';
             redirect('/new-post.php');
         }
 
         if ($post['type'] === 'image/jpeg' || $post['type'] === 'image/jpg' || $post['type'] === 'image/png') {
-            $destination = __DIR__ . '/../../img-posts/' . createUniqueFileName($_SESSION['user']['username'], $post["name"]);
+            $destination = __DIR__.'/../../img-posts/'.createUniqueFileName($_SESSION['user']['username'], $post['name']);
             move_uploaded_file($post['tmp_name'], $destination);
         } else {
-            $_SESSION['message'] = 'The ' . $post['name'] . ' image file type is not allowed.';
+            $_SESSION['message'] = 'The '.$post['name'].' image file type is not allowed.';
             redirect('/new-post.php');
         }
 
@@ -62,10 +60,9 @@ if (isset($_FILES['post'], $_POST['description'], $_GET['id'])) {
 
         $oldFilename = $oldpost['post_img'];
 
-
         //update to new filename in db
 
-        $pahtArray = explode("/", $destination);
+        $pahtArray = explode('/', $destination);
         $postStringName = end($pahtArray);
 
         $statement = $pdo->prepare('UPDATE posts SET description=:description, post_img=:post_img WHERE id=:id');
@@ -76,16 +73,15 @@ if (isset($_FILES['post'], $_POST['description'], $_GET['id'])) {
 
         $statement->execute([
             ':description' => $description,
-            ':post_img' => $postStringName,
-            ':id' => $id,
+            ':post_img'    => $postStringName,
+            ':id'          => $id,
         ]);
-
 
         // delets old avatar file.
         if ($oldFilename !== null) {
-            unlink(__DIR__ . '/../../img-posts/' . $oldFilename);
+            unlink(__DIR__.'/../../img-posts/'.$oldFilename);
         }
     }
 }
 
-redirect('/home.php?id=' . $_SESSION['user']['id']);
+redirect('/home.php?id='.$_SESSION['user']['id']);

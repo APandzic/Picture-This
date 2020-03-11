@@ -2,8 +2,7 @@
 
 declare(strict_types=1);
 
-
-require __DIR__ . '/../autoload.php';
+require __DIR__.'/../autoload.php';
 
 // In this file we register new users.
 
@@ -17,7 +16,7 @@ if (isset($_POST['firstName'], $_POST['lastName'], $_POST['username'], $_POST['e
 
     $uppercase = preg_match('@[A-Z]@', $password);
     $lowercase = preg_match('@[a-z]@', $password);
-    $number    = preg_match('@[0-9]@', $password);
+    $number = preg_match('@[0-9]@', $password);
 
     //check characters in password
 
@@ -41,7 +40,7 @@ if (isset($_POST['firstName'], $_POST['lastName'], $_POST['username'], $_POST['e
 
     $statement->execute([
         ':username' => $username,
-        ':email' => $email,
+        ':email'    => $email,
     ]);
 
     $user = $statement->fetch(PDO::FETCH_ASSOC);
@@ -74,7 +73,7 @@ if (isset($_POST['firstName'], $_POST['lastName'], $_POST['username'], $_POST['e
     $user = $statement->fetch(PDO::FETCH_ASSOC);
 
     unset($user['password']);
-    $_SESSION["user"] = $user;
+    $_SESSION['user'] = $user;
 }
 
-redirect('/home.php?id=' . $_SESSION['user']['id']);
+redirect('/home.php?id='.$_SESSION['user']['id']);
