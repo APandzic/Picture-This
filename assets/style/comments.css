@@ -1,0 +1,35 @@
+.comment-list {
+  list-style: none;
+  padding-left: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.delete-button {
+  background: url("/img-icons/trashcan.png");
+  background-repeat: round;
+  cursor: pointer;
+  height: 35px;
+  border: none;
+}
+
+.comment-submit {
+  background: url("/img-icons/send.png");
+  background-repeat: round;
+  height: 35px;
+  border: none;
+  cursor: pointer;
+}
+
+.comment-edit {
+  background: url("/img-icons/edit.png");
+  background-repeat: round;
+  height: 35px;
+  border: none;
+  cursor: pointer;
+  color: white;
+}
+
+.comment-icons {
+  display: flex;
+}
