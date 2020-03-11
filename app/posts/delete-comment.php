@@ -5,7 +5,6 @@ declare(strict_types=1);
 require __DIR__ . '/../autoload.php';
 
 if (isset($_POST['commentid'])) {
-
     $statement = $pdo->prepare('SELECT * FROM comments WHERE id = :userId');
     $statement->execute([
         ':userId' => $_SESSION['user']['id']
